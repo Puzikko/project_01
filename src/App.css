@@ -7,31 +7,6 @@
     "n c";
 
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 1fr 10fr;
+  grid-template-columns: 100px 10fr;
   grid-gap: 4px;
-}
-
-.head {
-  grid-area: h;
-  background-color: aqua;
-}
-
-.head img {
-  width: 60px;
-  height: 60px;
-}
-
-.nav {
-  grid-area: n;
-  background-color: aquamarine;
-}
-
-.content {
-  grid-area: c;
-  background-color: blue;
-}
-
-.content img {
-  width: 800px;
-  height: 460px;
 }
