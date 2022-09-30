@@ -1,6 +1,7 @@
 .app-wrapper {
   margin: auto;
   display: grid;
+  padding: 10px;
 
   grid-template-areas:
     "h h"
@@ -13,10 +14,12 @@
 
 .app-wrapper-content{
   grid-area: c;
-  background-color: gainsboro;
+  background-color: cornflowerblue;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .app-wrapper-content img {
-  width: 800px;
-  height: 460px;
+  width: 100%;
+  height: 300px;
 }
