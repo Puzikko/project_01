@@ -1,24 +1,7 @@
 import React from 'react';
 import classDialogs from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
-
-const DialogUser = (props) => {
-    let path = '/dialogs/' + props.id
-    return (
-        <div className={classDialogs.dialog}>
-            <NavLink to={path}
-            className={({isActive}) => isActive ? classDialogs.active : ''}>{props.name}</NavLink>
-        </div>
-    )
-}
-
-const Message = (props) => {
-    return (
-        <div className={classDialogs.userMessages}>
-            <div>{props.message}</div>
-        </div>
-    )
-}
+import DialogUser from './DialogUser/DialogUser';
+import Message from './Message/Message';
 
 const Dialogs = (props) => {
 
@@ -43,10 +26,10 @@ const Dialogs = (props) => {
         <div>
             <div className={classDialogs.homePage}>
                 <div className={classDialogs.userDialogs}>
-                    { dialog }
+                    <DialogUser arrayOfDialogUser={dialogsData} />
                 </div>
                 <div>
-                    { message }
+                    <Message arrayOfMessages={messagesData} />
                 </div>
             </div>
         </div>
