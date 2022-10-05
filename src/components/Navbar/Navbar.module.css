@@ -1,0 +1,15 @@
+.nav {
+  grid-area: n;
+  background-color: cornflowerblue;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.link a {
+  color: lavender;
+  text-decoration: none;
+}
+
+.link a.active {
+  color: gold;
+}

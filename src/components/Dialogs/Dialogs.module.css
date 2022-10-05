@@ -1,0 +1,16 @@
+.homePage {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 10px;
+}
+
+.userDialogs a {
+    margin-left: 20px;
+    color: lavender;
+}
+
+.userDialogs a.active {
+    color: brown;
+    text-decoration: none;
+
+}
