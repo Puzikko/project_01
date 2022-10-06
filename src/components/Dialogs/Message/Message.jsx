@@ -4,7 +4,7 @@ import classDialogs from './../Dialogs.module.css';
 
 const Message = (props) => {
 
-    let message = props.arrayOfMessages.map(message => 
+    let message = props.messagesData.map(message => 
         <div> {message.message} </div>)
 
     return (
