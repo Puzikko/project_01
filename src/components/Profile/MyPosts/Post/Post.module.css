@@ -1,5 +1,24 @@
 .post {
+  width: 50%;
+  margin-top: 2px;
   color:  aliceblue;
+  /* outline: auto gray; */
+  border: 2px rgba(157, 87, 158, 0.877) groove;
+  border-radius: 37px;
+  /* border-top-right-radius: 70px; */
+}
+
+.block {
+  margin-left: 20px;
+}
+
+.avamessage{
+  display: grid;
+  grid-template-columns: 2fr 15fr;
+}
+
+h7 {
+  margin-top: 15px;
 }
 
 .like {

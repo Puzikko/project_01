@@ -9,8 +9,7 @@ const Dialogs = (props) => {
         <div>
             <div className={classDialogs.homePage}>
                 <div className={classDialogs.userDialogs}>
-                    {/* {dialog} */}
-                    <DialogUser dialogsData={props.dialogsData}/>
+                   <DialogUser dialogsData={props.dialogsData}/>
                 </div>
                 <div>
                     <Message messagesData={props.messagesData} />

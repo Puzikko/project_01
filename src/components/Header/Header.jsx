@@ -4,9 +4,9 @@ import classHeader from './Header.module.css';
 const Header = (props) => {
     return (
         <header className={classHeader.head}>
-            <img src='https://www.kindpng.com/picc/m/9-96703_collection-of-png-feather-icon-png-transparent-png.png'/>
+            <img src='https://phonoteka.org/uploads/posts/2021-09/thumbs/1631647327_30-phonoteka-org-p-kartinka-pero-i-chernilnitsa-prozrachnii-f-32.png'/>
             <div className={classHeader.title}>
-                Feather-network
+                Feather - network
             </div>
         </header>
     )
