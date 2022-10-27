@@ -7,15 +7,16 @@
 }
 
 .head img {
+    margin-top: auto;
+    margin-bottom: auto;
     width: 40px;
     height: 40px;
     padding: 10px;
 }
 
-.title {
+.title h2 {
     color: #1d351e;
     text-align: left;
-    font-family: Bradley Hand;
-    margin-top: 8pt;
     font-size: 20pt;
+    font-family: Bradley Hand;
 }

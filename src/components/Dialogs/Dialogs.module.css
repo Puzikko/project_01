@@ -14,3 +14,27 @@
     text-decoration: none;
 
 }
+
+.dialog {
+    font-family: Bradley Hand;
+    font-size: 15pt;
+}
+
+.dialog img {
+    width: 36px;
+    height: 36px;
+    background-color: gold;
+    border-radius: 50%;
+}
+
+.userMessages {
+    display: grid;
+    grid-template-rows: 6fr 2fr;
+}
+
+.userMessages img {
+    width: 8px;
+    height: 8px;
+    background-color: blue;
+    border-radius: 50%;
+}

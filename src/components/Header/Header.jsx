@@ -6,7 +6,7 @@ const Header = (props) => {
         <header className={classHeader.head}>
             <img src='https://phonoteka.org/uploads/posts/2021-09/thumbs/1631647327_30-phonoteka-org-p-kartinka-pero-i-chernilnitsa-prozrachnii-f-32.png'/>
             <div className={classHeader.title}>
-                Feather - network
+                <h2>Feather - network</h2>
             </div>
         </header>
     )

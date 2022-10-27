@@ -5,6 +5,12 @@
   padding: 10px;
 }
 
+.link {
+  font-family: Bradley Hand;
+  font-size: 16pt;
+  margin-bottom: 5px;
+}
+
 .link a {
   color: lavender;
   text-decoration: none;
@@ -12,4 +18,26 @@
 
 .link a.active {
   color: gold;
+}
+
+.friendsBar {
+  margin-top: 100px;
+}
+
+.friendsBar h2 {
+  font-family: Bradley Hand;
+  font-size: 18pt;
+  text-align: center;
+}
+
+.imgsBlock {
+  text-align: center;
+}
+
+.friendBlock img {
+  width: 40px;
+  height: 40px;
+  background-color: gold;
+  border-radius: 50%;
+  margin-right: 5px;
 }
