@@ -14,10 +14,10 @@ const App = (props) => {
         <Router>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar dialogsData={props.dialogsData}/>
+                <Navbar dialogsData={props.state.dialogsData}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile' element={<Profile postsData={props.state.postsData}/>}/>
+                        <Route path='/profile' element={<Profile postsData={props.state.postsData} addPost={props.addPost}/>}/>
                         <Route path='/dialogs/*' element={<Dialogs 
                                                                     dialogsData={props.state.dialogsData} 
                                                                     messagesData={props.state.messagesData}/>}/>

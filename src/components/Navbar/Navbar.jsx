@@ -25,19 +25,22 @@ const Navbar = (props) => {
                 <NavLink to='/settings'
                          className={({isActive}) => isActive ? classNavbar.active : ''}>Settings</NavLink>
             </div>
+
+            <h2>Friends</h2>
+
             <div className={classNavbar.friendsBar}>
-                <h2>Friends</h2>
+
                 <div className={classNavbar.friendBlock}>
                     <img></img>
-                    <div> Serega </div>
+                    <div> { props.dialogsData[0].name } </div>
                 </div>
                 <div className={classNavbar.friendBlock}>
                     <img></img>
-                    <div> Davy Jones </div>
+                    <div> { props.dialogsData[1].name } </div>
                 </div>
                 <div className={classNavbar.friendBlock}>
                     <img></img>
-                    <div> Valentinka </div>
+                    <div> { props.dialogsData[2].name } </div>
                 </div>
             </div>
         </nav>

@@ -21,10 +21,12 @@
 }
 
 .friendsBar {
-  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-.friendsBar h2 {
+.nav h2 {
+  margin-top: 100px;
   font-family: Bradley Hand;
   font-size: 18pt;
   text-align: center;
@@ -35,8 +37,8 @@
 }
 
 .friendBlock img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: gold;
   border-radius: 50%;
   margin-right: 5px;

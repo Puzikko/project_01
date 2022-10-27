@@ -21,4 +21,14 @@ messagesData: [
   ],
 };
 
+export let addPost = (postMessage) => {
+    debugger;
+    let newPost = {
+        id: 1,
+        message: postMessage,
+        likeCounter: 0
+    }
+    state.postsData.push(newPost);
+}
+
 export default state;
