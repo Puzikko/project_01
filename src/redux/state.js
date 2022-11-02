@@ -66,4 +66,4 @@ export const subscribe = (observer) => {
     rerenderEntireTree = observer;
 }
 
-export defaul
+export default state;
