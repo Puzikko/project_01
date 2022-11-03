@@ -18,7 +18,6 @@ const Message = (props) => {
     }
 
     const onChangeMessage = () => {
-        debugger;
         let newChar = sendMessage.current.value;
         props.updateNewMessageText(newChar);
     }

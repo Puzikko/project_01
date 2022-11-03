@@ -8,6 +8,7 @@ const MyPosts = (props) => {
                                                  likeCounter={post.likeCounter}/>);
 
     let newPostElement = React.createRef()
+
     const addPost = () => {
         props.addPost();
     };

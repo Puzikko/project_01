@@ -13,23 +13,23 @@ const App = (props) => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar dialogsData={props.state.dialogsPage.dialogsData}/>
+            <Navbar dialogsData={props.store.state.dialogsPage.dialogsData}/>
             <div className='app-wrapper-content'>
                 <Routes>
 
                     <Route path='/profile'
-                           element={<Profile postsData={props.state.profilePage.postsData}
-                                             newPostText={props.state.profilePage.newPostText}
-                                             addPost={props.addPost}
-                                             updateNewPostText={props.updateNewPostText}
+                           element={<Profile postsData={props.store.state.profilePage.postsData}
+                                             newPostText={props.store.state.profilePage.newPostText}
+                                             addPost={props.store.addPost}
+                                             updateNewPostText={props.store.updateNewPostText}
                                              />}/>
 
                     <Route path='/dialogs/*' element={<Dialogs
-                        dialogsData={props.state.dialogsPage.dialogsData}
-                        messagesData={props.state.dialogsPage.messagesData}
-                        newMessageText={props.state.dialogsPage.newMessageText}
-                        sendMessage={props.sendMessage}
-                        updateNewMessageText={props.updateNewMessageText}
+                        dialogsData={props.store.state.dialogsPage.dialogsData}
+                        messagesData={props.store.state.dialogsPage.messagesData}
+                        newMessageText={props.store.state.dialogsPage.newMessageText}
+                        sendMessage={props.store.sendMessage}
+                        updateNewMessageText={props.store.updateNewMessageText}
                         />}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
