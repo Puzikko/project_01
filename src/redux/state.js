@@ -1,10 +1,10 @@
-let rerenderEntireTree;
-/*let rerenderEntireTree = (state) => {
+let _callSubscriber;
+/*let _callSubscriber = (state) => {
     debugger;
 }*/
 
 const store = {
-    state: {
+    _state: {
         profilePage: {
             postsData: [
                 {id: 1, message: 'Good job!', likeCounter: '5'},
@@ -31,35 +31,38 @@ const store = {
             newMessageText: 'Hi!!'
         }
     },
+    getState() {
+        return this._state;
+    },
     addPost() {
         let newPost = {
             id: 1,
-            message: store.state.profilePage.newPostText,
+            message: this._state.profilePage.newPostText,
             likeCounter: 0
         };
-        store.state.profilePage.postsData.push(newPost);
-        rerenderEntireTree();
-        store.updateNewPostText('');
+        this._state.profilePage.postsData.push(newPost);
+        _callSubscriber();
+        this.updateNewPostText('');
     },
     updateNewPostText(newChar) {
-        store.state.profilePage.newPostText = newChar;
-        rerenderEntireTree();
+        this._state.profilePage.newPostText = newChar;
+        _callSubscriber();
     },
     sendMessage() {
         let newMessage = {
             id: 1,
-            message: store.state.dialogsPage.newMessageText
+            message: this._state.dialogsPage.newMessageText
         }
-        store.state.dialogsPage.messagesData.push(newMessage);
-        store.state.dialogsPage.newMessageText = '';
-        rerenderEntireTree();
+        this._state.dialogsPage.messagesData.push(newMessage);
+        this._state.dialogsPage.newMessageText = '';
+        _callSubscriber();
     },
     updateNewMessageText(newChar) {
-        store.state.dialogsPage.newMessageText = newChar;
-        rerenderEntireTree();
+        this._state.dialogsPage.newMessageText = newChar;
+        _callSubscriber();
     },
     subscribe(observer) {
-        rerenderEntireTree = observer;
+        _callSubscriber = observer;
     },
 }
 

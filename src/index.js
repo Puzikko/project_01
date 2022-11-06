@@ -12,7 +12,8 @@ export let rerenderEntireTree = () => {
     root.render(
         <Router>
             <React.StrictMode>
-                <App store={store} />
+                <App store={store}
+                     state={store.getState()}/>
             </React.StrictMode>
         </Router>
     );
