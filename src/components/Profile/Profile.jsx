@@ -8,9 +8,11 @@ const Profile = (props) => {
         <div>
             <AvatarDescription/>
             <MyPosts postsData={props.postsData}
-                     addPost={props.addPost}
-                     updateNewPostText={props.updateNewPostText}
-                     newPostText={props.newPostText}/>
+                     newPostText={props.newPostText}
+                     dispatch={props.dispatch}
+                     // addPost={props.addPost}
+                     // updateNewPostText={props.updateNewPostText}
+                     />
         </div>
     )
 }

@@ -31,39 +31,71 @@ const store = {
             newMessageText: 'Hi!!'
         }
     },
+
     getState() {
         return this._state;
-    },
-    addPost() {
-        let newPost = {
-            id: 1,
-            message: this._state.profilePage.newPostText,
-            likeCounter: 0
-        };
-        this._state.profilePage.postsData.push(newPost);
-        _callSubscriber();
-        this.updateNewPostText('');
-    },
-    updateNewPostText(newChar) {
-        this._state.profilePage.newPostText = newChar;
-        _callSubscriber();
-    },
-    sendMessage() {
-        let newMessage = {
-            id: 1,
-            message: this._state.dialogsPage.newMessageText
-        }
-        this._state.dialogsPage.messagesData.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        _callSubscriber();
-    },
-    updateNewMessageText(newChar) {
-        this._state.dialogsPage.newMessageText = newChar;
-        _callSubscriber();
     },
     subscribe(observer) {
         _callSubscriber = observer;
     },
+
+    // addPost() {
+    //     let newPost = {
+    //         id: 1,
+    //         message: this._state.profilePage.newPostText,
+    //         likeCounter: 0
+    //     };
+    //     this._state.profilePage.postsData.push(newPost);
+    //     _callSubscriber();
+    //     this.updateNewPostText('');
+    // },
+    // updateNewPostText(newChar) {
+    //     this._state.profilePage.newPostText = newChar;
+    //     _callSubscriber();
+    // },
+    // sendMessage() {
+    //     let newMessage = {
+    //         id: 1,
+    //         message: this._state.dialogsPage.newMessageText
+    //     }
+    //     this._state.dialogsPage.messagesData.push(newMessage);
+    //     this._state.dialogsPage.newMessageText = '';
+    //     _callSubscriber();
+    // },
+    // updateNewMessageText(newChar) {
+    //     this._state.dialogsPage.newMessageText = newChar;
+    //     _callSubscriber();
+    // },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 1,
+                message: this._state.profilePage.newPostText,
+                likeCounter: 0
+            };
+            this._state.profilePage.postsData.push(newPost);
+            _callSubscriber();
+            this._state.profilePage.newPostText = '';
+        };
+        if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newChar;
+            _callSubscriber();
+        };
+        if (action.type === 'SEND-MESSAGE') {
+            let newMessage = {
+                id: 1,
+                message: this._state.dialogsPage.newMessageText
+            }
+            this._state.dialogsPage.messagesData.push(newMessage);
+            this._state.dialogsPage.newMessageText = '';
+            _callSubscriber();
+        };
+        if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newChar;
+            _callSubscriber();
+        };
+    }
 }
 
 export default store;
