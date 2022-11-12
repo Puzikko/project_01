@@ -2,7 +2,6 @@ import React from 'react';
 import classDialogs from './Dialogs.module.css';
 import DialogUser from './DialogUser/DialogUser';
 import Message from './Message/Message';
-import {updateNewMessageText} from "../../redux/state";
 
 const Dialogs = (props) => {
 
@@ -16,9 +15,6 @@ const Dialogs = (props) => {
                     <Message messagesData={props.messagesData}
                              newMessageText={props.newMessageText}
                              dispatch={props.dispatch}
-
-                             // sendMessage={props.sendMessage}
-                             // updateNewMessageText={props.updateNewMessageText}
                     />
                 </div>
             </div>
