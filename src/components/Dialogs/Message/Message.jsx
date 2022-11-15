@@ -1,7 +1,5 @@
 import React from 'react';
 import classDialogs from './../Dialogs.module.css';
-import {sendMessageActionCreator, updateNewMessageTextActionCeator} from "../../../redux/DialogReducer";
-
 
 const Message = (props) => {
 
@@ -12,14 +10,13 @@ const Message = (props) => {
         </div>
     )
 
-    let sendMessage = React.createRef();
-    const fnSendMessage = () => {
-        props.dispatch(sendMessageActionCreator())
+    const onSendMessage = () => {
+        props.sendMessage();
     }
 
-    const onChangeMessage = () => {
-        let newChar = sendMessage.current.value;
-        props.dispatch(updateNewMessageTextActionCeator(newChar));
+    const onChangeMessage = (event) => {
+        let newChar = event.target.value;
+        props.onChangeMessage(newChar);
     }
 
     return (
@@ -28,16 +25,16 @@ const Message = (props) => {
                 {message}
             </div>
             <div>
-                <textarea ref={sendMessage}
+                <textarea placeholder={'Print your message.'}
                           onChange={onChangeMessage}
                           value={props.newMessageText}
                 />
                 <div>
-                    <button onClick={fnSendMessage}>Send message</button>
+                    <button onClick={onSendMessage}>Send message</button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Message
+export default Message;

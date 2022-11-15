@@ -26,11 +26,10 @@ const store = {
                 {id: 1, message: 'How much is the fish?'},
                 {id: 1, message: 'Check the microphone!'}
             ],
-            newMessageText: 'Hi!!'
+            newMessageText: ''
         }
     },
     _callSubscriber() {
-        debugger;
     },
 
     getState() {
