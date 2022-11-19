@@ -4,13 +4,13 @@ import AvatarDescription from "./Avatar_Description/AvatarDescription";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
-    debugger
+
     return (
         <div>
-            <AvatarDescription/>
-            <MyPostsContainer profilePage={props.profilePage}
-                              dispatch={props.dispatch}
-                                />
+            <AvatarDescription />
+            <MyPostsContainer /*profilePage={props.profilePage}
+                              dispatch={props.dispatch}*/
+            />
         </div>
     )
 }

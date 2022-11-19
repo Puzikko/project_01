@@ -3,9 +3,9 @@ import classMyPosts from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  
+    debugger
     let post = props.profilePage.postsData.map(post => <Post message={post.message}
-                                                 likeCounter={post.likeCounter}/>);
+        likeCounter={post.likeCounter} />);
 
     let onPostChange = (event) => {
         let newChar = event.target.value;
@@ -18,10 +18,10 @@ const MyPosts = (props) => {
                 My posts
                 <div>
                     <textarea placeholder={'Print you post.'}
-                              onChange={ onPostChange }
-                              value={ props.profilePage.newPostText }/>
+                        onChange={onPostChange}
+                        value={props.profilePage.newPostText} />
                     <div>
-                        <button onClick={ props.addPost }>Add post</button>
+                        <button onClick={props.addPost}>Add post</button>
                     </div>
                 </div>
                 <div>
@@ -29,7 +29,7 @@ const MyPosts = (props) => {
                 </div>
             </div>
             <div className={classMyPosts.posts}>
-                { post }
+                {post}
             </div>
         </div>
     )

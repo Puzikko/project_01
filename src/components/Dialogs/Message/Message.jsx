@@ -10,11 +10,7 @@ const Message = (props) => {
         </div>
     )
 
-    const onSendMessage = () => {
-        props.sendMessage();
-    }
-
-    const onChangeMessage = (event) => {
+    const onChangeBody = (event) => {
         let newChar = event.target.value;
         props.onChangeMessage(newChar);
     }
@@ -26,11 +22,11 @@ const Message = (props) => {
             </div>
             <div>
                 <textarea placeholder={'Print your message.'}
-                          onChange={onChangeMessage}
+                          onChange={onChangeBody}
                           value={props.newMessageText}
                 />
                 <div>
-                    <button onClick={onSendMessage}>Send message</button>
+                    <button onClick={props.sendMessage}>Send message</button>
                 </div>
             </div>
         </div>
