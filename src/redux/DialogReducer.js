@@ -3,33 +3,38 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogsData: [
-        {id: 1, name: 'Serega'},
-        {id: 2, name: 'Valenta'},
-        {id: 3, name: 'Arsenchik'},
-        {id: 4, name: 'Davy Johnes'},
-        {id: 5, name: 'Sharky'}
+        { id: 1, name: 'Serega' },
+        { id: 2, name: 'Valenta' },
+        { id: 3, name: 'Arsenchik' },
+        { id: 4, name: 'Davy Johnes' },
+        { id: 5, name: 'Sharky' }
     ],
 
     messagesData: [
-        {id: 1, message: 'Wassssup men?'},
-        {id: 1, message: 'How much is the fish?'},
-        {id: 1, message: 'Check the microphone!'}
+        { id: 1, message: 'Wassssup men?' },
+        { id: 1, message: 'How much is the fish?' },
+        { id: 1, message: 'Check the microphone!' }
     ],
     newMessageText: ''
 };
 
 export const dialogReducer = (state = initialState, action) => {
+    let stateCopy;
     switch (action.type) {
         case SEND_MESSAGE:
+            stateCopy = { ...state };
             let newMessage = {
                 id: 1,
-                message: state.newMessageText
+                message: stateCopy.newMessageText
             }
-            state.messagesData.push(newMessage);
-            state.newMessageText = '';
-            return state;
+            stateCopy.messagesData = [...state.messagesData];
+            stateCopy.messagesData.push(newMessage);
+            stateCopy.newMessageText = '';
+            return stateCopy;
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newChar;
+            stateCopy = { ...state };
+            stateCopy.newMessageText = action.newChar;
+            return stateCopy;
         default:
             return state;
     }
@@ -39,5 +44,5 @@ export const sendMessageActionCreator = () => {
     return { type: SEND_MESSAGE }
 }
 export const updateNewMessageTextActionCeator = (newChar) => {
-    return {type: UPDATE_NEW_MESSAGE_TEXT, newChar}
+    return { type: UPDATE_NEW_MESSAGE_TEXT, newChar }
 }

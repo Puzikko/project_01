@@ -4,20 +4,14 @@ import DialogUserContainer from "./DialogUser/DialogUserContainer";
 import MessageContainer from "./Message/MessageContainer";
 
 const Dialogs = () => {
-
     return (
         <div>
             <div className={classDialogs.homePage}>
                 <div className={classDialogs.userDialogs}>
-                    <DialogUserContainer
-                    //    dialogsData={props.dialogsPage.dialogsData}
-                    />
+                    <DialogUserContainer />
                 </div>
                 <div>
-                    <MessageContainer
-                    // dialogsPage={props.dialogsPage}
-                    //                   dispatch={props.dispatch}
-                    />
+                    <MessageContainer />
                 </div>
             </div>
         </div>

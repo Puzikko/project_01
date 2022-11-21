@@ -8,22 +8,20 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { Routes, Route } from "react-router-dom";
+import NavbarContainer from './components/Navbar/NavbarContainer';
 
-const App = (props) => {
-    debugger
+const App = () => {
     return (
         <div className='app-wrapper'>
             <Header />
-            <Navbar dialogsData={props.store.getState().dialogsPage.dialogsData} />
+            <NavbarContainer />
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/profile'
                         element={<Profile />} />
 
-                    <Route path='/dialogs/*' element={<Dialogs
-                    // dialogsPage={props.store.getState().dialogsPage}
-                    // dispatch={props.store.dispatch.bind(props.store)}
-                    />} />
+                    <Route path='/dialogs/*'
+                        element={<Dialogs />} />
 
                     <Route path='/news' element={<News />} />
                     <Route path='/music' element={<Music />} />

@@ -3,6 +3,9 @@ import classNavbar from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
 
 const Navbar = (props) => {
+    let first = Math.floor(Math.random() * 5);
+    let second = Math.floor(Math.random() * 5);
+    let third = Math.floor(Math.random() * 5);
     return (
         <nav className={classNavbar.nav}>
             <div className={classNavbar.link}>
@@ -32,15 +35,15 @@ const Navbar = (props) => {
 
                 <div className={classNavbar.friendBlock}>
                     <img></img>
-                    <div> {props.dialogsData[0].name} </div>
+                    <div> {props.dialogsData[first].name} </div>
                 </div>
                 <div className={classNavbar.friendBlock}>
                     <img></img>
-                    <div> {props.dialogsData[1].name} </div>
+                    <div> {props.dialogsData[second].name} </div>
                 </div>
                 <div className={classNavbar.friendBlock}>
                     <img></img>
-                    <div> {props.dialogsData[2].name} </div>
+                    <div> {props.dialogsData[third].name} </div>
                 </div>
             </div>
         </nav>

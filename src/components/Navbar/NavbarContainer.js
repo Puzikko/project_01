@@ -1,4 +1,4 @@
-import DialogUser from "./DialogUser";
+import Navbar from './Navbar';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -7,6 +7,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const DialogUserContainer = connect(mapStateToProps)(DialogUser);
+const NavbarContainer = connect(mapStateToProps)(Navbar);
 
-export default DialogUserContainer
+export default NavbarContainer;

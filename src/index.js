@@ -8,27 +8,15 @@ import App from './App';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-export let rerenderEntireTree = () => {
-
-    root.render(
-        <Router>
-            <React.StrictMode>
-                <Provider store={store}>
-                    <App store={store} />
-                </Provider>
-            </React.StrictMode>
-        </Router>
-    );
-}
-
-
-rerenderEntireTree(store.getState());
-
-store.subscribe(() => {
-    rerenderEntireTree(store.getState());
-});
-
+root.render(
+    <Router>
+        <React.StrictMode>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </React.StrictMode>
+    </Router>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

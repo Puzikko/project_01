@@ -22,8 +22,8 @@ const Message = (props) => {
             </div>
             <div>
                 <textarea placeholder={'Print your message.'}
-                          onChange={onChangeBody}
-                          value={props.newMessageText}
+                    onChange={onChangeBody}
+                    value={props.newMessageText}
                 />
                 <div>
                     <button onClick={props.sendMessage}>Send message</button>
