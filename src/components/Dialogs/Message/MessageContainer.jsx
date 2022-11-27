@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const MessageContainer = connect(mapStateToProps, mapDispatchToProps)(Message);
 
-export default MessageContainer
+export default MessageContainer;
