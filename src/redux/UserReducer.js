@@ -3,9 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 
 let initialState = {
-    users: [
-
-    ]
+    users: [],
 };
 
 export const usersReducer = (state = initialState, action) => {

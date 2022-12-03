@@ -1,36 +1,39 @@
+import axios from "axios";
 import React from "react";
 import classUsers from './Users.module.css';
+import Photo from '../../images/Snapchat-Logo.jpg';
 
 const Users = (props) => {
 
-    if (props.users.length === 0) {
-        props.setUsers(
-            [
-                {
-                    id: 1,
-                    photoURL: 'https://i.pinimg.com/originals/c7/73/f4/c773f4d77f6088a92d4ac01b94b8296d.jpg',
-                    followed: false, fullName: 'Serega', status: 'Perpetum mobile.', location: { city: 'Warsaw', country: 'Poland' }
-                },
-                {
-                    id: 2,
-                    photoURL: 'https://i.pinimg.com/originals/c7/73/f4/c773f4d77f6088a92d4ac01b94b8296d.jpg',
-                    followed: true, fullName: 'Valentinka', status: 'Perpetum mobile.', location: { city: 'Minsk', country: 'Belarus' }
-                },
-                {
-                    id: 3,
-                    photoURL: 'https://i.pinimg.com/originals/c7/73/f4/c773f4d77f6088a92d4ac01b94b8296d.jpg',
-                    followed: true, fullName: 'Arsenchik', status: 'Perpetum mobile.', location: { city: 'Moscow', country: 'Russia' }
-                },
-            ]
-        )
-    }
+    // {
+    //     "name": "Arsik08",
+    //         "id": 26953,
+    //             "uniqueUrlName": null,
+    //                 "photos": {
+    //         "small": null,
+    //             "large": null
+    //     },
+    //     "status": null,
+    //         "followed": false
+    // }
+
+    const getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(response => {
+                    debugger
+                    props.setUsers(response.data.items)
+                });
+        };
+    };
 
     return (
         <div>
+            <button onClick={getUsers}>Get Users</button>
             {props.users.map(user => <div key={user.id}>
                 <span>
                     <div className={classUsers.userPhoto} >
-                        <img src={user.photoURL} />
+                        <img src={Photo} />
                     </div>
                     <div>
                         {user.followed
@@ -41,12 +44,12 @@ const Users = (props) => {
 
                 <span>
                     <span>
-                        <div>{user.fullName}</div>
-                        <div>{user.status}</div>
+                        <div>{user.name}</div>
+                        <div>user.status</div>
                     </span>
                     <span>
-                        <div>{user.location.country}</div>
-                        <div>{user.location.city}</div>
+                        <div>user.location.country</div>
+                        <div>user.location.city</div>
                     </span>
                 </span>
             </div>
