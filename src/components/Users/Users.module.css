@@ -3,3 +3,7 @@
     height: 60px;
     border-radius: 30px;
 }
+
+.currentPage {
+    font-weight: bold;
+}
