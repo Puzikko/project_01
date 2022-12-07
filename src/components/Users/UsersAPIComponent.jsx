@@ -1,8 +1,7 @@
-import React from "react";
-import { connect } from 'react-redux';
-import { followAC, setUsersAC, unfollowAC, setUsersTotalCountAC, setCurrentPageAC } from "../../redux/UserReducer";
 import axios from "axios";
+import React from "react";
 import Users from './Users.jsx';
+
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
@@ -35,36 +34,4 @@ class UsersAPIComponent extends React.Component {
     }
 };
 
-const mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow(userID) {
-            dispatch(followAC(userID))
-        },
-        unfollow(userID) {
-            dispatch(unfollowAC(userID))
-        },
-        setUsers(users) {
-            dispatch(setUsersAC(users))
-        },
-        setUsersTotalCount(totalUsersCount) {
-            dispatch(setUsersTotalCountAC(totalUsersCount))
-        },
-        setCurrentPage(page) {
-            debugger
-            dispatch(setCurrentPageAC(page))
-        }
-    }
-}
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
-
-export default UsersContainer;
+export default UsersAPIComponent;
