@@ -1,17 +1,20 @@
 import React from 'react';
+import Preloader from '../../Preloader/Preloader';
+import Avatar from './Avatar/Avatar';
 import classAvatarDescription from './AvatarDescription.module.css';
+import ContactsAndJob from './Description/ContactsAndJob';
 
 const AvatarDescription = (props) => {
+    debugger
+    if (!props.profileData) return <Preloader />
     return (
         <div>
-            <div>
-                <div className={classAvatarDescription.imgBlock}>
-                    <img className={classAvatarDescription.imgProfile} src='https://img-fotki.yandex.ru/get/6604/64843573.14d/0_90959_f2a0118d_orig.jpg' />
-                </div>
-                <div className={classAvatarDescription.avaDescription}>
-                    ava + description
-                </div>
-            </div>
+            <Avatar avatar={props.profileData.photos.large}
+                fullName={props.profileData.fullName}
+                aboutMe={props.profileData.aboutMe} />
+            <ContactsAndJob contacts={props.profileData.contacts}
+                lookingForAJob={props.profileData.lookingForAJob}
+                lookingForAJobDescription={props.profileData.lookingForAJobDescription} />
         </div>
     )
 }

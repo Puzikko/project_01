@@ -1,6 +1,7 @@
 import React from "react";
 import classUsers from './Users.module.css';
 import Photo from '../../images/Snapchat-Logo.jpg';
+import { NavLink } from "react-router-dom";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -23,7 +24,9 @@ let Users = (props) => {
         {props.users.map(user => <div key={user.id}>
             <span>
                 <div className={classUsers.userPhoto} >
-                    <img src={user.photos.small !== null || undefined ? user.photos.small : user.photos.large !== null || undefined ? user.photos.large : Photo} />
+                    <NavLink to='/profile/'>
+                        <img src={user.photos.small !== null || undefined ? user.photos.small : Photo} />
+                    </NavLink>
                 </div>
                 <div>
                     {user.followed
