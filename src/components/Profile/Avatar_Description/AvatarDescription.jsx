@@ -5,7 +5,7 @@ import classAvatarDescription from './AvatarDescription.module.css';
 import ContactsAndJob from './Description/ContactsAndJob';
 
 const AvatarDescription = (props) => {
-    debugger
+
     if (!props.profileData) return <Preloader />
     return (
         <div>

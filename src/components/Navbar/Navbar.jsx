@@ -9,7 +9,7 @@ const Navbar = (props) => {
     return (
         <nav className={classNavbar.nav}>
             <div className={classNavbar.link}>
-                <NavLink to='/profile'
+                <NavLink to='/profile/'
                     className={({ isActive }) => isActive ? classNavbar.active : ''}>Profile</NavLink>
             </div>
             <div className={classNavbar.link}>

@@ -17,14 +17,13 @@ const App = () => {
             <NavbarContainer />
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/profile/*'
-                        element={<Profile />} />
+                    <Route path='/profile/*' element={<Profile />} >
+                        <Route path=':userId' element={<Profile />} />
+                    </Route>
 
-                    <Route path='/dialogs/*'
-                        element={<Dialogs />} />
+                    <Route path='/dialogs/*' element={<Dialogs />} />
 
-                    <Route path='/users'
-                        element={<UsersContainer />} />
+                    <Route path='/users' element={<UsersContainer />} />
 
                     <Route path='/news' element={<News />} />
                     <Route path='/music' element={<Music />} />
