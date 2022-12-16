@@ -2,6 +2,7 @@ import React from "react";
 import classUsers from './Users.module.css';
 import Photo from '../../images/Snapchat-Logo.jpg';
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -30,8 +31,29 @@ let Users = (props) => {
                 </div>
                 <div>
                     {user.followed
-                        ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button>
-                        : <button onClick={() => props.follow(user.id)}>Follow</button>}
+                        ? <button onClick={() => {
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                withCredentials: true,
+                                'API-KEY': '0ad28b8c-6eb9-4b81-bc2e-be90139f7712'
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.unfollow(user.id);
+                                    }
+                                })
+                        }}>Unfollow</button>
+                        : <button onClick={() => {
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                                withCredentials: true,
+                                'API-KEY': '0ad28b8c-6eb9-4b81-bc2e-be90139f7712'
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.follow(user.id);
+                                    }
+                                })
+
+                        }}>Follow</button>}
                 </div>
             </span>
 

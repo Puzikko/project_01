@@ -9,11 +9,12 @@ import Settings from "./components/Settings/Settings";
 import { Routes, Route } from "react-router-dom";
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const App = () => {
     return (
         <div className='app-wrapper'>
-            <Header />
+            <HeaderContainer />
             <NavbarContainer />
             <div className='app-wrapper-content'>
                 <Routes>

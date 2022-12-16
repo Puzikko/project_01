@@ -4,7 +4,7 @@
     background-image: linear-gradient(to right, rgba(50, 53, 255, 0.671), rgb(236, 96, 255));
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 1fr 9fr 100px;
 }
 
 .head img {
@@ -20,4 +20,8 @@
     text-align: left;
     font-size: 20pt;
     font-family: Bradley Hand;
+}
+
+.login a {
+    font-weight: bold;
 }

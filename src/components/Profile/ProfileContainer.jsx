@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 class ProfileAPIContainer extends React.Component {
 
     componentDidMount() {
-        debugger
+
         let userId = this.props.urlData;
         if (!userId) userId = '26943';
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
@@ -30,7 +30,7 @@ class ProfileAPIContainer extends React.Component {
 
 
 const UrlDataComponent = (props) => {
-    debugger
+
     const urlData = useParams();
     return <ProfileAPIContainer {...props} urlData={urlData.userId} />;
 }
