@@ -31,19 +31,24 @@ let Users = (props) => {
                 </div>
                 <div>
                     {user.followed
-                        ? <button onClick={() => {
+                        ? <button disabled={props.isButtonDisable.some(id => id === user.id)} onClick={() => {
+                            props.setToggleIsButtonDisable(true, user.id);
                             usersAPI.unfollow(user.id)
                                 .then(data => {
                                     if (data.resultCode === 0) {
                                         props.unfollow(user.id);
+                                        props.setToggleIsButtonDisable(false, user.id);
                                     }
                                 })
+
                         }}>Unfollow</button>
-                        : <button onClick={() => {
+                        : <button disabled={props.isButtonDisable.some(id => id === user.id)} onClick={() => {
+                            props.setToggleIsButtonDisable(true, user.id);
                             usersAPI.follow(user.id)
                                 .then(data => {
                                     if (data.resultCode === 0) {
                                         props.follow(user.id);
+                                        props.setToggleIsButtonDisable(false, user.id);
                                     }
                                 })
 
