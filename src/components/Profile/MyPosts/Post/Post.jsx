@@ -7,7 +7,7 @@ const Post = (props) => {
       <div className={classPost.block}>
         <div className={classPost.avamessage}>
           <img src='https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80' />
-          <h7>{props.message}</h7>
+          <h6>{props.message}</h6>
         </div>
 
         <div>

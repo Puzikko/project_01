@@ -4,7 +4,6 @@ import { setToggleIsFetching, getPhotos, nextPhoto, prevPhoto, setImgSrc } from 
 import Preloader from "../Preloader/Preloader";
 import { newsAPI } from '../../api/api_NASA';
 import News from './News';
-import { js } from "../../api/primer";
 
 class NewsAPIComponent extends React.Component {
 

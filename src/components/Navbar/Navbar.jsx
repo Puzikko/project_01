@@ -49,7 +49,7 @@ const Navbar = (props) => {
                     <div> {props.dialogsData[third].name} </div>
                 </div>
             </div>
-            <Currency />
+            {/* <Currency /> */}
         </nav>
     )
 }

@@ -2,7 +2,6 @@ import React from "react";
 import classUsers from './Users.module.css';
 import Photo from '../../images/Snapchat-Logo.jpg';
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -26,32 +25,18 @@ let Users = (props) => {
             <span>
                 <div className={classUsers.userPhoto} >
                     <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small !== null || undefined ? user.photos.small : Photo} />
+                        <img src={user.photos.small ? user.photos.small : Photo} />
                     </NavLink>
                 </div>
                 <div>
                     {user.followed
+
                         ? <button disabled={props.isButtonDisable.some(id => id === user.id)} onClick={() => {
-                            props.setToggleIsButtonDisable(true, user.id);
-                            usersAPI.unfollow(user.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.unfollow(user.id);
-                                        props.setToggleIsButtonDisable(false, user.id);
-                                    }
-                                })
-
+                            props.unfollow(user.id)
                         }}>Unfollow</button>
-                        : <button disabled={props.isButtonDisable.some(id => id === user.id)} onClick={() => {
-                            props.setToggleIsButtonDisable(true, user.id);
-                            usersAPI.follow(user.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.follow(user.id);
-                                        props.setToggleIsButtonDisable(false, user.id);
-                                    }
-                                })
 
+                        : <button disabled={props.isButtonDisable.some(id => id === user.id)} onClick={() => {
+                            props.follow(user.id)
                         }}>Follow</button>}
                 </div>
             </span>

@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -58,10 +60,52 @@ export const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const follow = (userID) => ({ type: FOLLOW, userID });
-export const unfollow = (userID) => ({ type: UNFOLLOW, userID });
+export const followSuccess = (userID) => ({ type: FOLLOW, userID });
+export const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_USERS_TOTAL_COUNT, totalUsersCount });
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 export const setToggleIsFetching = (isFetching) => ({ type: SET_TOGGLE_IS_FETCHING, isFetching });
 export const setToggleIsButtonDisable = (isFetching, userId) => ({ type: SET_TOGGLE_IS_BUTTON_DISABLE, isFetching, userId })
+
+export const getUsers = (currentPage, pageSize) => {
+
+    return (dispatch) => {
+        dispatch(setToggleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                console.log(data)
+                dispatch(setUsers(data.items));
+                dispatch(setUsersTotalCount(data.totalCount));
+                dispatch(setToggleIsFetching(false));
+            })
+    }
+}
+
+export const unfollow = (userID) => {
+    debugger
+    return (dispatch) => {
+        dispatch(setToggleIsButtonDisable(true, userID));
+        usersAPI.unfollow(userID)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(unfollowSuccess(userID));
+                    dispatch(setToggleIsButtonDisable(false, userID));
+                }
+            })
+    }
+}
+
+export const follow = (userID) => {
+    debugger
+    return (dispatch) => {
+        dispatch(setToggleIsButtonDisable(true, userID));
+        usersAPI.follow(userID)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(followSuccess(userID));
+                    dispatch(setToggleIsButtonDisable(false, userID));
+                }
+            })
+    }
+}
