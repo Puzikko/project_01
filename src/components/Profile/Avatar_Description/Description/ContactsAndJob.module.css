@@ -2,3 +2,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+.contacts {
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid rgb(129, 75, 127);
+}
+
+.lookingForJob {
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid rgb(129, 75, 127);
+}

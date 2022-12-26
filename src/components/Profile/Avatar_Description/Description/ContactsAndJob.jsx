@@ -6,7 +6,7 @@ const ContactsAndJob = (props) => {
 
     return (
         <div className={classContactsAndJob.wrapper}>
-            <div style={{ backgroundColor: 'gold' }}>
+            <div className={classContactsAndJob.contacts}>
                 You can find me here
                 <div>
                     <ul>
@@ -38,7 +38,7 @@ const ContactsAndJob = (props) => {
                 </div>
             </div>
 
-            <div style={{ backgroundColor: 'purple' }}>
+            <div className={classContactsAndJob.lookingForJob}>
                 Looking for a job:
                 <div>
                     {props.lookingForAJob.toString()}

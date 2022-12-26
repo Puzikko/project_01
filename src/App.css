@@ -1,6 +1,7 @@
 .app-wrapper {
   margin: auto;
   display: grid;
+  height: 100%;
   padding: 0px;
   background-color: wheat;
 
@@ -8,14 +9,14 @@
     "h h"
     "n c";
 
-  grid-template-rows: 1fr 12fr;
+  grid-template-rows: 75px 1fr;
   grid-template-columns: 2fr 9fr;
   grid-gap: 2px;
 }
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: cornflowerblue;
+  background-image: linear-gradient(to right, rgb(125, 139, 240), rgb(236, 96, 255));
   border-radius: 10px;
 }
 
