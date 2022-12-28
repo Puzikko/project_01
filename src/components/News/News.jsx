@@ -2,6 +2,7 @@ import React from 'react';
 import classNews from './News.module.css';
 
 const News = (props) => {
+
     return (
         <div className={classNews.wrapper}>
             <div>

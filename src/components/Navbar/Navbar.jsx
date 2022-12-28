@@ -1,12 +1,10 @@
 import React from 'react';
 import classNavbar from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
-import Currency from './Currency';
+import FriendsBar from './Friends/FriendsBar';
 
 const Navbar = (props) => {
-    let first = Math.floor(Math.random() * 5);
-    let second = Math.floor(Math.random() * 5);
-    let third = Math.floor(Math.random() * 5);
+
     return (
         <nav className={classNavbar.nav}>
             <div className={classNavbar.link}>
@@ -34,22 +32,7 @@ const Navbar = (props) => {
                     className={({ isActive }) => isActive ? classNavbar.active : ''}>Settings</NavLink>
             </div>
 
-            <h2>Friends</h2>
-            <div className={classNavbar.friendsBar}>
-                <div className={classNavbar.friendBlock}>
-                    <img></img>
-                    <div> {props.dialogsData[first].name} </div>
-                </div>
-                <div className={classNavbar.friendBlock}>
-                    <img></img>
-                    <div> {props.dialogsData[second].name} </div>
-                </div>
-                <div className={classNavbar.friendBlock}>
-                    <img></img>
-                    <div> {props.dialogsData[third].name} </div>
-                </div>
-            </div>
-            {/* <Currency /> */}
+            {props.isAuth ? <FriendsBar dialogsData={props.dialogsData} /> : null};
         </nav>
     )
 }

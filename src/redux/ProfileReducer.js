@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE_USER_DATA = 'SET-PROFILE-USER-DATA';
@@ -49,4 +51,13 @@ export const updateNewPostTextActionCeator = (newChar) => {
 }
 export const setProfileUserData = (profileUserData) => {
     return { type: SET_PROFILE_USER_DATA, profileUserData }
+}
+export const getUserProfileThunk = (userId) => {
+    return (dispatch) => {
+        if (!userId) userId = '26943';
+        profileAPI.getUserProfile(userId)
+            .then(data => {
+                dispatch(setProfileUserData(data));
+            })
+    }
 }

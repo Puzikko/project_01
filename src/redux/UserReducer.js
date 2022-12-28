@@ -68,22 +68,22 @@ export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 export const setToggleIsFetching = (isFetching) => ({ type: SET_TOGGLE_IS_FETCHING, isFetching });
 export const setToggleIsButtonDisable = (isFetching, userId) => ({ type: SET_TOGGLE_IS_BUTTON_DISABLE, isFetching, userId })
 
-export const getUsers = (currentPage, pageSize) => {
+export const getUsersThunk = (currentPage, pageSize) => {
 
     return (dispatch) => {
         dispatch(setToggleIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
-                console.log(data)
                 dispatch(setUsers(data.items));
                 dispatch(setUsersTotalCount(data.totalCount));
+                dispatch(setCurrentPage(currentPage))
                 dispatch(setToggleIsFetching(false));
             })
     }
 }
 
 export const unfollow = (userID) => {
-    debugger
+
     return (dispatch) => {
         dispatch(setToggleIsButtonDisable(true, userID));
         usersAPI.unfollow(userID)
@@ -97,7 +97,7 @@ export const unfollow = (userID) => {
 }
 
 export const follow = (userID) => {
-    debugger
+
     return (dispatch) => {
         dispatch(setToggleIsButtonDisable(true, userID));
         usersAPI.follow(userID)

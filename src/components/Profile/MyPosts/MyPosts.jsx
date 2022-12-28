@@ -3,7 +3,7 @@ import classMyPosts from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-    let post = props.profilePage.postsData.map(post => <Post message={post.message}
+    let post = props.profilePage.postsData.map((post, index) => <Post key={index} message={post.message}
         likeCounter={post.likeCounter} />);
 
     let onPostChange = (event) => {

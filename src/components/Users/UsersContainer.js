@@ -1,19 +1,21 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { follow, unfollow, setCurrentPage, getUsers } from "../../redux/UserReducer";
+import { follow, unfollow, setCurrentPage, getUsersThunk } from "../../redux/UserReducer";
 import Users from './Users.jsx';
 import Preloader from "../Preloader/Preloader";
+import { Navigate } from "react-router-dom";
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        this.props.getUsersThunk(this.props.currentPage, this.props.pageSize)
     };
 
     onPageChanged = (page) => {
-        this.props.getUsers(page, this.props.pageSize)
+        this.props.getUsersThunk(page, this.props.pageSize)
     };
 
     render() {
+        if (!this.props.isAuth) return <Navigate replace to='/login' />
         return <>
             {this.props.isFetching ? <Preloader /> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
@@ -35,11 +37,12 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        isButtonDisable: state.usersPage.isButtonDisable
+        isButtonDisable: state.usersPage.isButtonDisable,
+        isAuth: state.auth.isAuth,
     }
 };
 
 const UsersContainer = connect(mapStateToProps,
-    { follow, unfollow, setCurrentPage, getUsers })(UsersAPIComponent);
+    { follow, unfollow, setCurrentPage, getUsersThunk })(UsersAPIComponent);
 
 export default UsersContainer;

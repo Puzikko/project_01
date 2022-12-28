@@ -8,7 +8,6 @@ export const newsAPI = {
     async getPhotos() {
         return await instance.get(`photos?sol=1000&api_key=l5gKg3XfmKqUEZb1BlBWkLU64hnMWPY2d6xxcenD`)
             .then(response => {
-                debugger
                 return response.data
             })
     }

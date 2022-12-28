@@ -1,31 +1,23 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { setToggleIsFetching, getPhotos, nextPhoto, prevPhoto, setImgSrc } from "../../redux/NewsReducer";
+import { Navigate } from "react-router-dom";
+import { nextPhoto, prevPhoto, getPhotosThunk, setImgSrc } from "../../redux/NewsReducer";
 import Preloader from "../Preloader/Preloader";
-import { newsAPI } from '../../api/api_NASA';
 import News from './News';
 
 class NewsAPIComponent extends React.Component {
 
     componentDidMount() {
-        this.props.setToggleIsFetching(true);
-        newsAPI.getPhotos()
-            .then(data => {
-                this.props.getPhotos(data.photos);
-                this.props.setImgSrc(data.photos[this.props.index].img_src)
-                this.props.setToggleIsFetching(false);
-            })
+        this.props.getPhotosThunk(this.props.index)
     };
 
-
-
     render() {
-        this.props.setImgSrc(this.props.photos[this.props.index]?.img_src)
+        if (!this.props.isAuth) return <Navigate replace to='/login' />
+        if (this.props.src) { this.props.setImgSrc(this.props.photos[this.props.index]?.img_src) }
+        else { return <><Preloader /></> };
         return <>
             {this.props.isFetching ? <Preloader /> : null}
-            <News isFetching={this.props.isFetching}
-                src={this.props.src}
-                index={this.props.index}
+            <News src={this.props.src}
                 nextPhoto={this.props.nextPhoto}
                 prevPhoto={this.props.prevPhoto} />
         </>
@@ -38,11 +30,12 @@ const mapStateToProps = (state) => {
         isFetching: state.newsPage.isFetching,
         photos: state.newsPage.photos,
         index: state.newsPage.index,
-        src: state.newsPage.src
+        src: state.newsPage.src,
+        isAuth: state.auth.isAuth,
     }
 };
 
-const NewsContainer = connect(mapStateToProps, { setToggleIsFetching, getPhotos, nextPhoto, prevPhoto, setImgSrc })
+const NewsContainer = connect(mapStateToProps, { nextPhoto, prevPhoto, getPhotosThunk, setImgSrc })
     (NewsAPIComponent);
 
 export default NewsContainer;

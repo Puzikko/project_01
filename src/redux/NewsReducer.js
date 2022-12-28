@@ -1,3 +1,5 @@
+import { newsAPI } from "../api/api_NASA";
+
 const ADD_ARRAY_OF_PHOTOS = 'ADD-ARRAY-OF-PHOTOS-SRC';
 const SET_TOGGLE_IS_FETCHING = 'SET-TOGGLE-IS-FETCHING';
 const SET_NEXT_PHOTO = 'SET-NEXT-PHOTO';
@@ -60,4 +62,16 @@ export const nextPhoto = () => {
 }
 export const prevPhoto = () => {
     return { type: SET_PREV_PHOTO }
+}
+export const getPhotosThunk = (index) => {
+    return (dispatch) => {
+        dispatch(setToggleIsFetching(true));
+        newsAPI.getPhotos()
+            .then(data => {
+
+                dispatch(getPhotos(data.photos));
+                dispatch(setImgSrc(data.photos[index].img_src));
+                dispatch(setToggleIsFetching(false));
+            })
+    }
 }

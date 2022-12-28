@@ -1,25 +1,17 @@
 import React from 'react';
-import { setProfileUserData } from '../../redux/ProfileReducer';
+import { getUserProfileThunk } from '../../redux/ProfileReducer';
 import AvatarDescription from "./Avatar_Description/AvatarDescription";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { profileAPI } from '../../api/api';
-
+import { useParams, Navigate } from 'react-router-dom';
 class ProfileAPIContainer extends React.Component {
 
     componentDidMount() {
-
-        let userId = this.props.urlData;
-        if (!userId) userId = '26943';
-        profileAPI.getUserProfile(userId)
-            .then(data => {
-                debugger
-                this.props.setProfileUserData(data);
-            })
+        this.props.getUserProfileThunk(this.props.urlData)
     }
 
     render() {
+        if (!this.props.isAuth) return <Navigate replace to='/login' />
         return (
             <div>
                 <AvatarDescription profileData={this.props.profileData} />
@@ -40,8 +32,9 @@ const UrlDataComponent = (props) => {
 const mapStateToProps = (state) => {
     return {
         profileData: state.profilePage.profileUserData,
+        isAuth: state.auth.isAuth,
     }
 }
 
-const Profile = connect(mapStateToProps, { setProfileUserData })(UrlDataComponent);
+const Profile = connect(mapStateToProps, { getUserProfileThunk })(UrlDataComponent);
 export default Profile;

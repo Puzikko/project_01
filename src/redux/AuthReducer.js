@@ -1,3 +1,5 @@
+import { authAPI } from "../api/api";
+
 const IS_AUTH = 'IS-AUTH';
 
 let initialState = {
@@ -23,4 +25,16 @@ export const authReducer = (state = initialState, action) => {
 
 export const setIsAuth = (data) => {
     return { type: IS_AUTH, data }
+}
+
+export const logInThunk = () => {
+    return (dispatch) => {
+        authAPI.authMe()
+            .then(data => {
+
+                if (data.resultCode === 0) {
+                    dispatch(setIsAuth(data.data))
+                }
+            })
+    }
 }

@@ -3,8 +3,8 @@ import classDialogs from './../Dialogs.module.css';
 
 const Message = (props) => {
 
-    let message = props.messagesData.map(message =>
-        <div>
+    let message = props.messagesData.map((message, index) =>
+        <div key={index}>
             <img></img>
             {message.message}
         </div>
