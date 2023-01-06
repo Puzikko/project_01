@@ -4,6 +4,8 @@ import { Navigate } from "react-router-dom";
 import { nextPhoto, prevPhoto, getPhotosThunk, setImgSrc } from "../../redux/NewsReducer";
 import Preloader from "../Preloader/Preloader";
 import News from './News';
+import { WithAuthRedirect } from './../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class NewsAPIComponent extends React.Component {
 
@@ -31,11 +33,12 @@ const mapStateToProps = (state) => {
         photos: state.newsPage.photos,
         index: state.newsPage.index,
         src: state.newsPage.src,
-        isAuth: state.auth.isAuth,
     }
 };
 
-const NewsContainer = connect(mapStateToProps, { nextPhoto, prevPhoto, getPhotosThunk, setImgSrc })
-    (NewsAPIComponent);
+const NewsContainer = compose(
+    connect(mapStateToProps, { nextPhoto, prevPhoto, getPhotosThunk, setImgSrc }),
+    WithAuthRedirect
+)(NewsAPIComponent)
 
 export default NewsContainer;

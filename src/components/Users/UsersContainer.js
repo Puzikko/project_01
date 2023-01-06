@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from 'react-redux';
+import { compose } from "redux";
 import { follow, unfollow, setCurrentPage, getUsersThunk } from "../../redux/UserReducer";
 import Users from './Users.jsx';
 import Preloader from "../Preloader/Preloader";
 import { Navigate } from "react-router-dom";
+import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
@@ -38,11 +40,12 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         isButtonDisable: state.usersPage.isButtonDisable,
-        isAuth: state.auth.isAuth,
     }
 };
 
-const UsersContainer = connect(mapStateToProps,
-    { follow, unfollow, setCurrentPage, getUsersThunk })(UsersAPIComponent);
+const UsersContainer = compose(
+    connect(mapStateToProps, { follow, unfollow, setCurrentPage, getUsersThunk }),
+    WithAuthRedirect
+)(UsersAPIComponent)
 
 export default UsersContainer;

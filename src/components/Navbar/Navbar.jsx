@@ -32,7 +32,7 @@ const Navbar = (props) => {
                     className={({ isActive }) => isActive ? classNavbar.active : ''}>Settings</NavLink>
             </div>
 
-            {props.isAuth ? <FriendsBar dialogsData={props.dialogsData} /> : null};
+            {props.isAuth ? <FriendsBar dialogsData={props.dialogsData} /> : null}
         </nav>
     )
 }

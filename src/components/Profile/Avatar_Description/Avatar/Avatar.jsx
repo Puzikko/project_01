@@ -1,6 +1,7 @@
 import React from 'react';
 import classAvatar from './Avatar.module.css';
 import backgroundIMG from '../../../../images/backgroundIMG.jpg';
+import Status from './Status';
 
 const Avatar = (props) => {
 
@@ -18,7 +19,8 @@ const Avatar = (props) => {
 
                 <div className={classAvatar.fullName}>
                     <h2>{props.fullName}</h2>
-                    <div>{props.aboutMe}</div>
+                    <Status aboutMe={props.aboutMe} />
+                    {/* <span>{props.aboutMe ? props.aboutMe : 'No status.'}</span> */}
                 </div>
 
             </div>

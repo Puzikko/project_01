@@ -3,7 +3,8 @@ import { getUserProfileThunk } from '../../redux/ProfileReducer';
 import AvatarDescription from "./Avatar_Description/AvatarDescription";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from 'react-redux';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
 class ProfileAPIContainer extends React.Component {
 
     componentDidMount() {
@@ -11,7 +12,6 @@ class ProfileAPIContainer extends React.Component {
     }
 
     render() {
-        if (!this.props.isAuth) return <Navigate replace to='/login' />
         return (
             <div>
                 <AvatarDescription profileData={this.props.profileData} />
@@ -21,6 +21,11 @@ class ProfileAPIContainer extends React.Component {
     };
 }
 
+const mapStateToProps = (state) => {
+    return {
+        profileData: state.profilePage.profileUserData,
+    }
+}
 
 const UrlDataComponent = (props) => {
 
@@ -28,13 +33,7 @@ const UrlDataComponent = (props) => {
     return <ProfileAPIContainer {...props} urlData={urlData.userId} />;
 }
 
+const WithRedirectProfilePage = WithAuthRedirect(UrlDataComponent);
 
-const mapStateToProps = (state) => {
-    return {
-        profileData: state.profilePage.profileUserData,
-        isAuth: state.auth.isAuth,
-    }
-}
-
-const Profile = connect(mapStateToProps, { getUserProfileThunk })(UrlDataComponent);
+const Profile = connect(mapStateToProps, { getUserProfileThunk })(WithRedirectProfilePage);
 export default Profile;

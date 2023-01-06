@@ -2,9 +2,11 @@ import React from 'react';
 import classDialogs from './Dialogs.module.css';
 import { sendMessage, onChangeMessage } from '../../redux/DialogReducer';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import DialogUser from './DialogUser/DialogUser';
 import Message from './Message/Message';
 import { Navigate } from 'react-router-dom';
+import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
 
 class DialogsContainer extends React.Component {
 
@@ -24,15 +26,18 @@ class DialogsContainer extends React.Component {
         );
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         dialogsData: state.dialogsPage.dialogsData,
         messagesData: state.dialogsPage.messagesData,
         newMessageText: state.dialogsPage.newMessageText,
-        isAuth: state.auth.isAuth,
     }
 }
 
-const Dialogs = connect(mapStateToProps, { sendMessage, onChangeMessage })(DialogsContainer)
+const Dialogs = compose(
+    connect(mapStateToProps, { sendMessage, onChangeMessage }),
+    WithAuthRedirect
+)(DialogsContainer)
 
 export default Dialogs
