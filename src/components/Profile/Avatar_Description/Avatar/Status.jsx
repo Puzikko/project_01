@@ -1,8 +1,10 @@
 import React from "react";
 
 class Status extends React.Component {
+
     state = {
         editMode: false,
+        status: this.props.status,
     }
     activateEditMode = () => {
         this.setState({
@@ -13,16 +15,26 @@ class Status extends React.Component {
         this.setState({
             editMode: false
         })
+        this.props.putUserStatusOnServer(this.state.status)
     }
+    onChangeBody = (e) => {
+        debugger
+        console.log(e.target.value)
+        this.setState({
+            status: e.target.value
+        })
+    }
+
     render() {
         return (<>
             {!this.state.editMode &&
                 <span onClick={this.activateEditMode}>
-                    {this.props.aboutMe ? this.props.aboutMe : 'No status.'}
+                    {this.props.status !== null ? this.props.status : 'No status.'}
                 </span>}
             {this.state.editMode &&
                 <>
-                    <input value={this.props.aboutMe ? this.props.aboutMe : 'No status.'}>
+                    <input value={this.state.status !== null ? this.state.status : 'No status.'}
+                        onChange={this.onChangeBody} >
                     </input>
                     <div>
                         <button onClick={this.deActivateEditMode}>Save</button>

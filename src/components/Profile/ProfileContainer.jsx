@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUserProfileThunk } from '../../redux/ProfileReducer';
+import { getUserProfileThunk, getUserStatusThunk, putUserStatusThunk } from '../../redux/ProfileReducer';
 import AvatarDescription from "./Avatar_Description/AvatarDescription";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from 'react-redux';
@@ -9,12 +9,16 @@ class ProfileAPIContainer extends React.Component {
 
     componentDidMount() {
         this.props.getUserProfileThunk(this.props.urlData)
+        this.props.getUserStatusThunk(this.props.urlData)
     }
 
     render() {
         return (
             <div>
-                <AvatarDescription profileData={this.props.profileData} />
+                <AvatarDescription profileData={this.props.profileData}
+                    status={this.props.status}
+                    putUserStatusOnServer={this.props.putUserStatusThunk}
+                />
                 <MyPostsContainer />
             </div>
         );
@@ -24,6 +28,7 @@ class ProfileAPIContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profileData: state.profilePage.profileUserData,
+        status: state.profilePage.status,
     }
 }
 
@@ -35,5 +40,6 @@ const UrlDataComponent = (props) => {
 
 const WithRedirectProfilePage = WithAuthRedirect(UrlDataComponent);
 
-const Profile = connect(mapStateToProps, { getUserProfileThunk })(WithRedirectProfilePage);
+const Profile = connect(mapStateToProps, { getUserProfileThunk, getUserStatusThunk, putUserStatusThunk })
+    (WithRedirectProfilePage);
 export default Profile;

@@ -3,6 +3,7 @@ import { profileAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE_USER_DATA = 'SET-PROFILE-USER-DATA';
+const SET_USER_STATUS = 'SET-USER-STATUS';
 
 let initialState = {
     postsData: [
@@ -12,6 +13,7 @@ let initialState = {
     ],
     newPostText: '',
     profileUserData: null,
+    status: '',
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -36,8 +38,13 @@ export const profileReducer = (state = initialState, action) => {
         case SET_PROFILE_USER_DATA:
             return {
                 ...state,
-                profileUserData: action.profileUserData
-            }
+                profileUserData: action.profileUserData,
+            };
+        case SET_USER_STATUS:
+            return {
+                ...state,
+                status: action.status
+            };
         default:
             return state;
     };
@@ -49,8 +56,11 @@ export const addPostActionCreator = () => {
 export const updateNewPostTextActionCeator = (newChar) => {
     return { type: UPDATE_NEW_POST_TEXT, newChar }
 }
-export const setProfileUserData = (profileUserData) => {
+const setProfileUserData = (profileUserData) => {
     return { type: SET_PROFILE_USER_DATA, profileUserData }
+}
+const setUserStatus = (status) => {
+    return { type: SET_USER_STATUS, status }
 }
 export const getUserProfileThunk = (userId) => {
     return (dispatch) => {
@@ -58,6 +68,26 @@ export const getUserProfileThunk = (userId) => {
         profileAPI.getUserProfile(userId)
             .then(data => {
                 dispatch(setProfileUserData(data));
+            })
+    }
+}
+export const getUserStatusThunk = (userId) => {
+    return (dispatch) => {
+        profileAPI.getUserStatus(userId)
+            .then(status => {
+                dispatch(setUserStatus(status));
+            })
+    }
+}
+export const putUserStatusThunk = (status) => {
+    return (dispatch) => {
+        profileAPI.putUserStatus(status)
+            .then(data => {
+                debugger
+                if (data.resultCode === 0) {
+                    dispatch(setUserStatus(status))
+                }
+                else dispatch(setUserStatus('No status...'))
             })
     }
 }

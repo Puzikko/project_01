@@ -4,7 +4,7 @@ import backgroundIMG from '../../../../images/backgroundIMG.jpg';
 import Status from './Status';
 
 const Avatar = (props) => {
-
+    debugger
     return (
         <div className={classAvatar.wrapper}>
 
@@ -19,8 +19,11 @@ const Avatar = (props) => {
 
                 <div className={classAvatar.fullName}>
                     <h2>{props.fullName}</h2>
-                    <Status aboutMe={props.aboutMe} />
-                    {/* <span>{props.aboutMe ? props.aboutMe : 'No status.'}</span> */}
+
+                    <Status status={props.status}
+                        putUserStatusOnServer={props.putUserStatusOnServer} />
+
+                    <p>About me: {props.aboutMe}</p>
                 </div>
 
             </div>

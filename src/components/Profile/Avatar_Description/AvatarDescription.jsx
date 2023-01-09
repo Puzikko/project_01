@@ -11,7 +11,10 @@ const AvatarDescription = (props) => {
         <div>
             <Avatar avatar={props.profileData.photos.large}
                 fullName={props.profileData.fullName}
-                aboutMe={props.profileData.aboutMe} />
+                aboutMe={props.profileData.aboutMe}
+                status={props.status}
+                putUserStatusOnServer={props.putUserStatusOnServer}
+            />
             <ContactsAndJob contacts={props.profileData.contacts}
                 lookingForAJob={props.profileData.lookingForAJob}
                 lookingForAJobDescription={props.profileData.lookingForAJobDescription} />
