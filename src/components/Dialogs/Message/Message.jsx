@@ -1,5 +1,6 @@
 import React from 'react';
 import classDialogs from './../Dialogs.module.css';
+import MessageInput from './MessageInputForm';
 
 const Message = (props) => {
 
@@ -10,9 +11,8 @@ const Message = (props) => {
         </div>
     )
 
-    const onChangeBody = (event) => {
-        let newChar = event.target.value;
-        props.onChangeMessage(newChar);
+    const getMessage = (formData) => {
+        props.sendMessage(formData.message)
     }
 
     return (
@@ -21,13 +21,7 @@ const Message = (props) => {
                 {message}
             </div>
             <div>
-                <textarea placeholder={'Print your message.'}
-                    onChange={onChangeBody}
-                    value={props.newMessageText}
-                />
-                <div>
-                    <button onClick={props.sendMessage}>Send message</button>
-                </div>
+                <MessageInput onSubmit={getMessage} />
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React from 'react';
 import classDialogs from './Dialogs.module.css';
-import { sendMessage, onChangeMessage } from '../../redux/DialogReducer';
+import { sendMessage } from '../../redux/DialogReducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import DialogUser from './DialogUser/DialogUser';
@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
 }
 
 const Dialogs = compose(
-    connect(mapStateToProps, { sendMessage, onChangeMessage }),
+    connect(mapStateToProps, { sendMessage }),
     WithAuthRedirect
 )(DialogsContainer)
 
