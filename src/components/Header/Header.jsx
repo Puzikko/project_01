@@ -17,6 +17,7 @@ const Header = (props) => {
 
             <div className={classHeader.login}>
                 {props.authUserLogin ? props.authUserLogin : <NavLink to='/login'>Login</NavLink>}
+                <NavLink to='/login'>Login</NavLink> {/*for tests page Login*/}
             </div>
         </header>
     )

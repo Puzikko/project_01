@@ -1,6 +1,7 @@
 import { authAPI } from "../api/api";
 
 const IS_AUTH = 'IS-AUTH';
+const SET_IF_LOGIN_CORRECT = 'SET-IF-LOGIN-CORRECT';
 
 let initialState = {
     id: null,
@@ -23,11 +24,14 @@ export const authReducer = (state = initialState, action) => {
     };
 };
 
-export const setIsAuth = (data) => {
+const setIsAuth = (data) => {
     return { type: IS_AUTH, data }
 }
+const setIfLoginCorrect = (loginData) => {
+    return { type: SET_IF_LOGIN_CORRECT, loginData }
+}
 
-export const logInThunk = () => {
+export const authMeThunk = () => {
     return (dispatch) => {
         authAPI.authMe()
             .then(data => {
@@ -37,4 +41,13 @@ export const logInThunk = () => {
                 }
             })
     }
+}
+export const logInThunk = (formData) => {
+    debugger
+    authAPI.logIn(formData)
+        .then(data => {
+            debugger
+        }
+        )
+
 }

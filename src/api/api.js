@@ -37,6 +37,16 @@ export const authAPI = {
             .then(response => {
                 return response.data
             })
+    },
+    logIn(formData) {
+        return instance.post('auth/login', {
+            email: formData.login,
+            password: formData.password,
+        })
+            .then(response => {
+                debugger
+                return response.data
+            })
     }
 };
 

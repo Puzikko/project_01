@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { logInThunk } from '../../redux/AuthReducer';
+import { authMeThunk } from '../../redux/AuthReducer';
 
 class HeaderContainerWithId extends React.Component {
 
     componentDidMount() {
-        this.props.logInThunk()
+        this.props.authMeThunk()
     }
 
     render() {
@@ -20,6 +20,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-const HeaderContainer = connect(mapStateToProps, { logInThunk })(HeaderContainerWithId);
+const HeaderContainer = connect(mapStateToProps, { authMeThunk })(HeaderContainerWithId);
 
 export default HeaderContainer;
