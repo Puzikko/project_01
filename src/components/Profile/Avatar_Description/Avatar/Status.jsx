@@ -1,10 +1,16 @@
 import React from "react";
 
 class Status extends React.Component {
-
     state = {
         editMode: false,
         status: this.props.status,
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
     activateEditMode = () => {
         this.setState({
@@ -18,8 +24,6 @@ class Status extends React.Component {
         this.props.putUserStatusOnServer(this.state.status)
     }
     onChangeBody = (e) => {
-        debugger
-        console.log(e.target.value)
         this.setState({
             status: e.target.value
         })

@@ -83,7 +83,6 @@ export const putUserStatusThunk = (status) => {
     return (dispatch) => {
         profileAPI.putUserStatus(status)
             .then(data => {
-                debugger
                 if (data.resultCode === 0) {
                     dispatch(setUserStatus(status))
                 }

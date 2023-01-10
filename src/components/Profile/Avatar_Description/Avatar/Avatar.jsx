@@ -4,7 +4,6 @@ import backgroundIMG from '../../../../images/backgroundIMG.jpg';
 import Status from './Status';
 
 const Avatar = (props) => {
-    debugger
     return (
         <div className={classAvatar.wrapper}>
 
