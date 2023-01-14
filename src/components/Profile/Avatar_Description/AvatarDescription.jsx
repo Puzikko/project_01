@@ -1,5 +1,5 @@
 import React from 'react';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../common/Preloader/Preloader';
 import Avatar from './Avatar/Avatar';
 import classAvatarDescription from './AvatarDescription.module.css';
 import ContactsAndJob from './Description/ContactsAndJob';

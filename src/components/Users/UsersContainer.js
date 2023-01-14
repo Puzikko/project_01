@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from "redux";
 import { follow, unfollow, setCurrentPage, getUsersThunk } from "../../redux/UserReducer";
 import Users from './Users.jsx';
-import Preloader from "../Preloader/Preloader";
+import Preloader from "../common/Preloader/Preloader";
 import { Navigate } from "react-router-dom";
 import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
 class UsersAPIComponent extends React.Component {

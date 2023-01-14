@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from '../../images/Spinner.svg';
+import Loader from '../../../images/Spinner.svg';
 
 const Preloader = (props) => {
     return <div>

@@ -1,5 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { requiredField } from "../../utils/validators/validators";
+import { Input } from "../common/FormsControls/FormsControl";
 
 const LogInForm = (props) => {
     //у тега <form> есть событие onSubmit (как и у нативной формы)
@@ -9,13 +11,15 @@ const LogInForm = (props) => {
             а component={'input'} - это тэг который отрисуется в HTML.
             name - обязательное свойство со своим именем.
             В devConsole введи store.getState().form и увидишь, как меняется state при вводе дааных в форму. */}
-            <Field placeholder="Login" name='login' component='input' />
+            <Field placeholder="Login" name='login'
+                component={Input} validate={[requiredField]} />
         </div>
         <div>
-            <Field placeholder="Password" name='password' component='input' />
+            <Field placeholder="Password" name='password'
+                component={Input} validate={[requiredField]} />
         </div>
         <div>
-            <Field type="checkbox" name='rememberMe' component='input' />remember me
+            <Field type="checkbox" name='rememberMe' component={Input} />remember me
         </div>
         <div>
             <button>Login</button>
