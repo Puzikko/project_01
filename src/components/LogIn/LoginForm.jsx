@@ -11,11 +11,11 @@ const LogInForm = (props) => {
             а component={'input'} - это тэг который отрисуется в HTML.
             name - обязательное свойство со своим именем.
             В devConsole введи store.getState().form и увидишь, как меняется state при вводе дааных в форму. */}
-            <Field placeholder="Login" name='login'
+            <Field placeholder="Login" name='email'
                 component={Input} validate={[requiredField]} />
         </div>
         <div>
-            <Field placeholder="Password" name='password'
+            <Field placeholder="Password" name='password' type='password'
                 component={Input} validate={[requiredField]} />
         </div>
         <div>

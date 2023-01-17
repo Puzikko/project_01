@@ -1,12 +1,11 @@
 import { authAPI } from "../api/api";
 
 const IS_AUTH = 'IS-AUTH';
-const SET_IF_LOGIN_CORRECT = 'SET-IF-LOGIN-CORRECT';
 
 let initialState = {
     id: null,
-    login: null,
     email: null,
+    login: null,
     isAuth: false,
 };
 
@@ -16,20 +15,16 @@ export const authReducer = (state = initialState, action) => {
         case IS_AUTH:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true,
+                ...action.payload,
             }
         default:
             return state;
     };
 };
 
-const setIsAuth = (data) => {
-    return { type: IS_AUTH, data }
-}
-const setIfLoginCorrect = (loginData) => {
-    return { type: SET_IF_LOGIN_CORRECT, loginData }
-}
+const setIsAuth = (payload) => {
+    return { type: IS_AUTH, payload }
+};
 
 export const authMeThunk = () => {
     return (dispatch) => {
@@ -37,17 +32,37 @@ export const authMeThunk = () => {
             .then(data => {
 
                 if (data.resultCode === 0) {
-                    dispatch(setIsAuth(data.data))
+                    dispatch(setIsAuth({ ...data.data, isAuth: true }))
                 }
             })
     }
-}
-export const logInThunk = (formData) => {
+};
+export const logInThunk = (email, password, rememberMe) => (dispatch) => {
     debugger
-    authAPI.logIn(formData)
-        .then(data => {
+    authAPI.logIn(email, password, rememberMe)
+        .then(response => {
             debugger
+            if (response.data.resultCode === 0) {
+                dispatch(authMeThunk())
+            }
         }
         )
 
-}
+};
+export const logOutThunk = () => (dispatch) => {
+    debugger
+    authAPI.logOut()
+        .then(response => {
+            debugger
+            if (response.data.resultCode === 0) {
+                dispatch(setIsAuth({
+                    id: null,
+                    email: null,
+                    login: null,
+                    isAuth: false,
+                }))
+            }
+        }
+        )
+
+};

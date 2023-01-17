@@ -38,16 +38,13 @@ export const authAPI = {
                 return response.data
             })
     },
-    logIn(formData) {
-        return instance.post('auth/login', {
-            email: formData.login,
-            password: formData.password,
-        })
-            .then(response => {
-                debugger
-                return response.data
-            })
+    logIn(email, password, rememberMe = false) {
+        return instance.post('auth/login', { email, password, rememberMe })
+    },
+    logOut() {
+        return instance.delete('auth/login')
     }
+
 };
 
 export const profileAPI = {

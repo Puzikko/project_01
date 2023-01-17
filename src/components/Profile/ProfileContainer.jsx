@@ -37,8 +37,8 @@ const UrlDataComponent = (props) => {
     return <ProfileAPIContainer {...props} urlData={urlData.userId} />;
 }
 
-//const WithRedirectProfilePage = WithAuthRedirect(UrlDataComponent); // Компонент с подтверждённой(/нет) аутентификацией
+const WithRedirectProfilePage = WithAuthRedirect(UrlDataComponent); // Компонент с подтверждённой(/нет) аутентификацией
 
 const Profile = connect(mapStateToProps, { getUserProfileThunk, getUserStatusThunk, putUserStatusThunk })
-    (UrlDataComponent);
+    (WithRedirectProfilePage);
 export default Profile;
