@@ -2,6 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { requiredField } from "../../utils/validators/validators";
 import { Input } from "../common/FormsControls/FormsControl";
+import classLoginForm from "../common/FormsControls/FormsControl.module.css";
 
 const LogInForm = (props) => {
     //у тега <form> есть событие onSubmit (как и у нативной формы)
@@ -19,8 +20,11 @@ const LogInForm = (props) => {
                 component={Input} validate={[requiredField]} />
         </div>
         <div>
-            <Field type="checkbox" name='rememberMe' component={Input} />remember me
+            <Field type="checkbox" name='rememberMe' component={Input} />Remember me
         </div>
+        {props.error && <div className={classLoginForm.formSummaryError}>
+            {props.error}
+        </div>}
         <div>
             <button>Login</button>
         </div>

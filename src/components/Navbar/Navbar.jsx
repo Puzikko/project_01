@@ -8,7 +8,7 @@ const Navbar = (props) => {
     return (
         <nav className={classNavbar.nav}>
             <div className={classNavbar.link}>
-                <NavLink to='/profile/26943'
+                <NavLink to={'/profile/' + (props.isAuth ? props.userId : '')}
                     className={({ isActive }) => isActive ? classNavbar.active : ''}>Profile</NavLink>
             </div>
             <div className={classNavbar.link}>

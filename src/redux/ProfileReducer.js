@@ -53,7 +53,6 @@ const setUserStatus = (status) => {
 }
 export const getUserProfileThunk = (userId) => {
     return (dispatch) => {
-        if (!userId) userId = '26943';
         profileAPI.getUserProfile(userId)
             .then(data => {
                 dispatch(setProfileUserData(data));

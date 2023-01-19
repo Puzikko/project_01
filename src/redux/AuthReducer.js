@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { authAPI } from "../api/api";
 
 const IS_AUTH = 'IS-AUTH';
@@ -38,22 +39,24 @@ export const authMeThunk = () => {
     }
 };
 export const logInThunk = (email, password, rememberMe) => (dispatch) => {
-    debugger
+
     authAPI.logIn(email, password, rememberMe)
         .then(response => {
-            debugger
             if (response.data.resultCode === 0) {
                 dispatch(authMeThunk())
+            } else {
+                //stopSubmit - это actionCreator из redux-form, чтобы остановить submit формы
+                //1-ый аргумент - уникальное название формы, 2-ой - ошибка для какого Field, 
+                //а _error - общая ошибка для всей формы и сюда мы передаём ошибку из response с сервера
+                let action = stopSubmit('login', { _error: response.data.messages });
+                dispatch(action)
             }
         }
         )
-
 };
 export const logOutThunk = () => (dispatch) => {
-    debugger
     authAPI.logOut()
         .then(response => {
-            debugger
             if (response.data.resultCode === 0) {
                 dispatch(setIsAuth({
                     id: null,
