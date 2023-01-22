@@ -29,7 +29,7 @@ const setIsAuth = (payload) => {
 
 export const authMeThunk = () => {
     return (dispatch) => {
-        authAPI.authMe()
+        return authAPI.authMe()
             .then(data => {
 
                 if (data.resultCode === 0) {
