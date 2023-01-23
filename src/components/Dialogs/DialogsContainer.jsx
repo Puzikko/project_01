@@ -7,6 +7,7 @@ import DialogUser from './DialogUser/DialogUser';
 import Message from './Message/Message';
 import { Navigate } from 'react-router-dom';
 import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
+import { getDialogsData, getMessagesData, getNewMessageText } from '../../redux/DialogsSelector';
 
 class DialogsContainer extends React.Component {
 
@@ -29,9 +30,9 @@ class DialogsContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        dialogsData: state.dialogsPage.dialogsData,
-        messagesData: state.dialogsPage.messagesData,
-        newMessageText: state.dialogsPage.newMessageText,
+        dialogsData: getDialogsData(state),
+        messagesData: getMessagesData(state),
+        newMessageText: getNewMessageText(state),
     }
 }
 

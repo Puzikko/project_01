@@ -14,7 +14,6 @@ class NewsAPIComponent extends React.Component {
     };
 
     render() {
-        if (!this.props.isAuth) return <Navigate replace to='/login' />
         if (this.props.src) { this.props.setImgSrc(this.props.photos[this.props.index]?.img_src) }
         else { return <><Preloader /></> };
         return <>

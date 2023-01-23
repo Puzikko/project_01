@@ -4,8 +4,8 @@ import { compose } from "redux";
 import { follow, unfollow, setCurrentPage, getUsersThunk } from "../../redux/UserReducer";
 import Users from './Users.jsx';
 import Preloader from "../common/Preloader/Preloader";
-import { Navigate } from "react-router-dom";
 import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
+import { getIsButtonDisable, getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/UserSelector";
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
@@ -33,12 +33,12 @@ class UsersAPIComponent extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        isButtonDisable: state.usersPage.isButtonDisable,
+        users: getUsers(state),
+        totalUsersCount: getTotalUsersCount(state),
+        pageSize: getPageSize(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        isButtonDisable: getIsButtonDisable(state),
     }
 };
 

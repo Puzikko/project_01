@@ -5,6 +5,8 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
+import { getProfileData, getStatus } from '../../redux/ProfileSelector';
+import { getIsAuth, getUserId } from '../../redux/AuthSelector';
 class ProfileAPIContainer extends React.Component {
 
     componentDidMount() {
@@ -27,10 +29,10 @@ class ProfileAPIContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        profileData: state.profilePage.profileUserData,
-        status: state.profilePage.status,
-        userId: state.auth.id,
-        isAuth: state.auth.isAuth,
+        profileData: getProfileData(state),
+        status: getStatus(state),
+        userId: getUserId(state),
+        isAuth: getIsAuth(state),
     }
 }
 
