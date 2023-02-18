@@ -28,7 +28,7 @@ const setIsAuth = (payload) => {
 };
 
 export const authMeThunk = () => {
-    debugger
+
     return async (dispatch) => {
         let data = await authAPI.authMe();
         if (data.resultCode === 0) {

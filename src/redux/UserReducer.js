@@ -10,7 +10,7 @@ const SET_TOGGLE_IS_BUTTON_DISABLE = 'SET-TOGGLE-IS-BUTTON-DISABLE';
 
 let initialState = {
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,

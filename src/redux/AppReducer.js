@@ -20,7 +20,7 @@ export const appReducer = (state = initialState, action) => {
 };
 
 export const initializedSuccessAC = () => {
-    debugger
+
     return { type: INITIALIZED_SUCCESS }
 };
 

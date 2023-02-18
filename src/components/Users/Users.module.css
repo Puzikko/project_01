@@ -4,6 +4,18 @@
     border-radius: 30px;
 }
 
+.paginatorWrapper {
+    padding: 5px;
+}
+
 .currentPage {
     font-weight: bold;
+    border: solid 2px black;
+    margin: 1px;
+    border-radius: 10%;
+}
+
+.notCurrentPage {
+    border: solid 1px black;
+    margin: 1px;
 }
