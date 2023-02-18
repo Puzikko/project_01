@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { Navigate } from "react-router-dom";
 import { nextPhoto, prevPhoto, getPhotosThunk, setImgSrc } from "../../redux/NewsReducer";
 import Preloader from "../common/Preloader/Preloader";
 import News from './News';

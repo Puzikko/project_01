@@ -32,31 +32,29 @@ export const newsReducer = (state = initialState, action) => {
                 src: action.src
             };
         case SET_NEXT_PHOTO:
-            let indexNext = state.index + 1;
             return {
                 ...state,
-                index: indexNext
+                index: ++state.index
             };
         case SET_PREV_PHOTO:
-            let indexPrev = state.index - 1;
             return {
                 ...state,
-                index: indexPrev
+                index: --state.index
             };
         default:
             return state;
     };
 };
 
-export const getPhotos = (photos) => {
+const getPhotos = (photos) => {
     return { type: ADD_ARRAY_OF_PHOTOS, photos }
+};
+const setToggleIsFetching = (isFetching) => {
+    return { type: SET_TOGGLE_IS_FETCHING, isFetching }
 };
 export const setImgSrc = (src) => {
     return { type: SET_IMG_SRC, src }
 }
-export const setToggleIsFetching = (isFetching) => {
-    return { type: SET_TOGGLE_IS_FETCHING, isFetching }
-};
 export const nextPhoto = () => {
     return { type: SET_NEXT_PHOTO }
 }
@@ -64,14 +62,11 @@ export const prevPhoto = () => {
     return { type: SET_PREV_PHOTO }
 }
 export const getPhotosThunk = (index) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setToggleIsFetching(true));
-        newsAPI.getPhotos()
-            .then(data => {
-
-                dispatch(getPhotos(data.photos));
-                dispatch(setImgSrc(data.photos[index].img_src));
-                dispatch(setToggleIsFetching(false));
-            })
+        let data = await newsAPI.getPhotos()
+        dispatch(getPhotos(data.photos));
+        dispatch(setImgSrc(data.photos[index].img_src));
+        dispatch(setToggleIsFetching(false));
     }
 }

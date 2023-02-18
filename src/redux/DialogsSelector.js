@@ -4,6 +4,3 @@ export const getDialogsData = (state) => {
 export const getMessagesData = (state) => {
     return state.dialogsPage.messagesData
 }
-export const getNewMessageText = (state) => {
-    return state.dialogsPage.newMessageText
-}

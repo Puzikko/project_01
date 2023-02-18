@@ -28,44 +28,36 @@ const setIsAuth = (payload) => {
 };
 
 export const authMeThunk = () => {
-    return (dispatch) => {
-        return authAPI.authMe()
-            .then(data => {
+    debugger
+    return async (dispatch) => {
+        let data = await authAPI.authMe();
+        if (data.resultCode === 0) {
+            dispatch(setIsAuth({ ...data.data, isAuth: true }))
+        }
+    };
+};
 
-                if (data.resultCode === 0) {
-                    dispatch(setIsAuth({ ...data.data, isAuth: true }))
-                }
-            })
+export const logInThunk = (email, password, rememberMe) => async (dispatch) => {
+
+    let response = await authAPI.logIn(email, password, rememberMe);
+    if (response.data.resultCode === 0) {
+        dispatch(authMeThunk())
+    } else {
+        //stopSubmit - это actionCreator из redux-form, чтобы остановить submit формы
+        //1-ый аргумент - уникальное название формы, 2-ой - ошибка для какого Field, 
+        //а _error - общая ошибка для всей формы и сюда мы передаём ошибку из response с сервера
+        let action = stopSubmit('login', { _error: response.data.messages });
+        dispatch(action)
     }
 };
-export const logInThunk = (email, password, rememberMe) => (dispatch) => {
-
-    authAPI.logIn(email, password, rememberMe)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(authMeThunk())
-            } else {
-                //stopSubmit - это actionCreator из redux-form, чтобы остановить submit формы
-                //1-ый аргумент - уникальное название формы, 2-ой - ошибка для какого Field, 
-                //а _error - общая ошибка для всей формы и сюда мы передаём ошибку из response с сервера
-                let action = stopSubmit('login', { _error: response.data.messages });
-                dispatch(action)
-            }
-        }
-        )
-};
-export const logOutThunk = () => (dispatch) => {
-    authAPI.logOut()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setIsAuth({
-                    id: null,
-                    email: null,
-                    login: null,
-                    isAuth: false,
-                }))
-            }
-        }
-        )
-
+export const logOutThunk = () => async (dispatch) => {
+    let response = await authAPI.logOut()
+    if (response.data.resultCode === 0) {
+        dispatch(setIsAuth({
+            id: null,
+            email: null,
+            login: null,
+            isAuth: false,
+        }))
+    }
 };

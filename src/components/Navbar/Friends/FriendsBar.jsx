@@ -6,21 +6,21 @@ const FriendsBar = (props) => {
     let second = Math.floor(Math.random() * 5);
     let third = Math.floor(Math.random() * 5);
 
+    const randomFriend = (number) => {
+        return (
+            <div className={classNavbar.friendBlock}>
+                <img alt=""></img>
+                <div> {props.dialogsData[number].name} </div>
+            </div>
+        )
+    };
+
     return <>
         <h2>Friends</h2>
         <div className={classNavbar.friendsBar}>
-            <div className={classNavbar.friendBlock}>
-                <img></img>
-                <div> {props.dialogsData[first].name} </div>
-            </div>
-            <div className={classNavbar.friendBlock}>
-                <img></img>
-                <div> {props.dialogsData[second].name} </div>
-            </div>
-            <div className={classNavbar.friendBlock}>
-                <img></img>
-                <div> {props.dialogsData[third].name} </div>
-            </div>
+            {randomFriend(first)}
+            {randomFriend(second)}
+            {randomFriend(third)}
         </div>
     </>
 };

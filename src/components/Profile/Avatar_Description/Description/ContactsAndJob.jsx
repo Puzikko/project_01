@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classContactsAndJob from './ContactsAndJob.module.css';
 
-const ContactsAndJob = (props) => {
+const ContactsAndJob = ({ contacts, lookingForAJob, lookingForAJobDescription }) => {
 
     return (
         <div className={classContactsAndJob.wrapper}>
@@ -11,28 +11,28 @@ const ContactsAndJob = (props) => {
                 <div>
                     <ul>
                         <li>
-                            <NavLink to={props.contacts.facebook}>facebook</NavLink>
+                            <NavLink to={contacts.facebook}>facebook</NavLink>
                         </li>
                         <li>
-                            <NavLink to={props.contacts.website}>website</NavLink>
+                            <NavLink to={contacts.website}>website</NavLink>
                         </li>
                         <li>
-                            <NavLink to={props.contacts.vk}>vk</NavLink>
+                            <NavLink to={contacts.vk}>vk</NavLink>
                         </li>
                         <li>
-                            <NavLink to={props.contacts.twitter}>twitter</NavLink>
+                            <NavLink to={contacts.twitter}>twitter</NavLink>
                         </li>
                         <li>
-                            <NavLink to={props.contacts.instagram}>instagram</NavLink>
+                            <NavLink to={contacts.instagram}>instagram</NavLink>
                         </li>
                         <li>
-                            <NavLink to={props.contacts.youtube}>youtube</NavLink>
+                            <NavLink to={contacts.youtube}>youtube</NavLink>
                         </li>
                         <li>
-                            <NavLink to={props.contacts.github}>github</NavLink>
+                            <NavLink to={contacts.github}>github</NavLink>
                         </li>
                         <li>
-                            <NavLink to={props.contacts.mainLink}>mainLink</NavLink>
+                            <NavLink to={contacts.mainLink}>mainLink</NavLink>
                         </li>
                     </ul>
                 </div>
@@ -41,10 +41,10 @@ const ContactsAndJob = (props) => {
             <div className={classContactsAndJob.lookingForJob}>
                 Looking for a job:
                 <div>
-                    {props.lookingForAJob.toString()}
+                    {lookingForAJob.toString()}
                 </div>
                 <div>
-                    {props.lookingForAJobDescription}
+                    {lookingForAJobDescription}
                 </div>
             </div>
         </div >

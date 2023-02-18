@@ -1,9 +1,9 @@
 import React from "react";
 import Loader from '../../../images/Spinner.svg';
 
-const Preloader = (props) => {
+const Preloader = () => {
     return <div>
-        <img src={Loader} />
+        <img src={Loader} alt='' />
     </div>
 };
 export default Preloader;

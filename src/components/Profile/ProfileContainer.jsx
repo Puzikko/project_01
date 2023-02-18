@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
 import { getProfileData, getStatus } from '../../redux/ProfileSelector';
 import { getIsAuth, getUserId } from '../../redux/AuthSelector';
+
 class ProfileAPIContainer extends React.Component {
 
     componentDidMount() {

@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 import featherImg from '../../images/feather.png';
 import classHeader from './Header.module.css';
 
-const Header = (props) => {
+const Header = ({ isAuth, authUserLogin, logOutThunk }) => {
 
     return (
         <header className={classHeader.head}>
             <NavLink to={'/news'}>
-                <img src={featherImg} />
+                <img src={featherImg} alt='' />
             </NavLink>
 
             <div className={classHeader.title}>
@@ -16,8 +16,8 @@ const Header = (props) => {
             </div>
 
             <div className={classHeader.login}>
-                {props.isAuth
-                    ? <div>{props.authUserLogin} <> <button onClick={props.logOutThunk}>Log Out</button> </> </div>
+                {isAuth
+                    ? <div>{authUserLogin} <> <button onClick={logOutThunk}>Log Out</button> </> </div>
                     : <NavLink to='/login'>Login</NavLink>}
             </div>
         </header>

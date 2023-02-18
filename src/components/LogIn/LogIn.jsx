@@ -4,13 +4,13 @@ import { logInThunk } from './../../redux/AuthReducer';
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-const LogIn = (props) => {
+const LogIn = ({ logInThunk, isAuth, userId }) => {
     // ф-ия onSubmit собирает все приходящие данные из формы логина (formData)
     const onSubmit = (formData) => {
-        props.logInThunk(formData.email, formData.password, formData.rememberMe)
+        logInThunk(formData.email, formData.password, formData.rememberMe)
     }
 
-    if (props.isAuth) { return <Navigate to={'/profile/' + props.userId} /> }
+    if (isAuth) { return <Navigate to={'/profile/' + userId} /> }
 
     return <div>
         <h1>Login</h1>

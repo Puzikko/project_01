@@ -1,23 +1,22 @@
 import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import Avatar from './Avatar/Avatar';
-import classAvatarDescription from './AvatarDescription.module.css';
 import ContactsAndJob from './Description/ContactsAndJob';
 
-const AvatarDescription = (props) => {
+const AvatarDescription = ({ profileData, status, putUserStatusOnServer }) => {
 
-    if (!props.profileData) return <Preloader />
+    if (!profileData) return <Preloader />
     return (
         <div>
-            <Avatar avatar={props.profileData.photos.large}
-                fullName={props.profileData.fullName}
-                aboutMe={props.profileData.aboutMe}
-                status={props.status}
-                putUserStatusOnServer={props.putUserStatusOnServer}
+            <Avatar avatar={profileData.photos.large}
+                fullName={profileData.fullName}
+                aboutMe={profileData.aboutMe}
+                status={status}
+                putUserStatusOnServer={putUserStatusOnServer}
             />
-            <ContactsAndJob contacts={props.profileData.contacts}
-                lookingForAJob={props.profileData.lookingForAJob}
-                lookingForAJobDescription={props.profileData.lookingForAJobDescription} />
+            <ContactsAndJob contacts={profileData.contacts}
+                lookingForAJob={profileData.lookingForAJob}
+                lookingForAJobDescription={profileData.lookingForAJobDescription} />
         </div>
     )
 }

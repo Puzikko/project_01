@@ -1,5 +1,3 @@
-import { stopSubmit } from "redux-form";
-import { authAPI } from "../api/api";
 import { authMeThunk } from "./AuthReducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
@@ -22,12 +20,13 @@ export const appReducer = (state = initialState, action) => {
 };
 
 export const initializedSuccessAC = () => {
+    debugger
     return { type: INITIALIZED_SUCCESS }
 };
 
 export const initializeAppTC = () => {
-    return (dispatch) => {
-        let promise = dispatch(authMeThunk());
-        promise.then(dispatch(initializedSuccessAC()))
+    return async (dispatch) => {
+        await dispatch(authMeThunk());
+        await dispatch(initializedSuccessAC());
     }
 };

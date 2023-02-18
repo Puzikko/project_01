@@ -3,12 +3,12 @@ import classNavbar from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
 import FriendsBar from './Friends/FriendsBar';
 
-const Navbar = (props) => {
+const Navbar = ({ isAuth, userId, dialogsData }) => {
 
     return (
         <nav className={classNavbar.nav}>
             <div className={classNavbar.link}>
-                <NavLink to={'/profile/' + (props.isAuth ? props.userId : '')}
+                <NavLink to={'/profile/' + (isAuth ? userId : '')}
                     className={({ isActive }) => isActive ? classNavbar.active : ''}>Profile</NavLink>
             </div>
             <div className={classNavbar.link}>
@@ -32,7 +32,7 @@ const Navbar = (props) => {
                     className={({ isActive }) => isActive ? classNavbar.active : ''}>Settings</NavLink>
             </div>
 
-            {props.isAuth ? <FriendsBar dialogsData={props.dialogsData} /> : null}
+            {isAuth ? <FriendsBar dialogsData={dialogsData} /> : null}
         </nav>
     )
 }

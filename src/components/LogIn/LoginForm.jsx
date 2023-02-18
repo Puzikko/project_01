@@ -4,9 +4,9 @@ import { requiredField } from "../../utils/validators/validators";
 import { Input } from "../common/FormsControls/FormsControl";
 import classLoginForm from "../common/FormsControls/FormsControl.module.css";
 
-const LogInForm = (props) => {
+const LogInForm = ({ handleSubmit, error }) => {
     //у тега <form> есть событие onSubmit (как и у нативной формы)
-    return <form onSubmit={props.handleSubmit}>
+    return <form onSubmit={handleSubmit}>
         <div>
             {/* Field - это компонент библиотеки, который принимает свои props, 
             а component={'input'} - это тэг который отрисуется в HTML.
@@ -22,8 +22,8 @@ const LogInForm = (props) => {
         <div>
             <Field type="checkbox" name='rememberMe' component={Input} />Remember me
         </div>
-        {props.error && <div className={classLoginForm.formSummaryError}>
-            {props.error}
+        {error && <div className={classLoginForm.formSummaryError}>
+            {error}
         </div>}
         <div>
             <button>Login</button>

@@ -3,13 +3,12 @@ import classMyPosts from './MyPosts.module.css';
 import Post from './Post/Post';
 import PostInput from './MyPostsInputForm';
 
-const MyPosts = React.memo(props => {
-    console.log('Render posts')
-    let post = props.postsData.map((post, index) => <Post key={index} message={post.message}
+const MyPosts = React.memo(({ postsData, addPost }) => {
+    let post = postsData.map((post, index) => <Post key={index} message={post.message}
         likeCounter={post.likeCounter} />);
 
     const getPostText = (formData) => {
-        props.addPost(formData.postText)
+        addPost(formData.postText)
     }
 
     return (

@@ -2,17 +2,17 @@ import React from 'react';
 import classDialogs from './../Dialogs.module.css';
 import MessageInput from './MessageInputForm';
 
-const Message = (props) => {
+const Message = ({ messagesData, sendMessage }) => {
 
-    let message = props.messagesData.map((message, index) =>
+    let message = messagesData.map((message, index) =>
         <div key={index}>
-            <img></img>
+            <img alt=''></img>
             {message.message}
         </div>
     )
 
     const getMessage = (formData) => {
-        props.sendMessage(formData.message)
+        sendMessage(formData.message)
     }
 
     return (
