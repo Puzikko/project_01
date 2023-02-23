@@ -4,11 +4,11 @@ import { useState } from "react";
 
 let Paginator = ({ totalUsersCount, pageSize, currentPage, onPageChanged }) => {
 
-    const [portion, setPortion] = useState(0);
-    let pagesCount = Math.ceil(totalUsersCount / pageSize);
-    let portionCount = Math.ceil(pagesCount / (pageSize * 2));
-    let leftPageOfPortion = portion * (pageSize * 2) + 1;
-    let rightPageOfPortion = (portion + 1) * (pageSize * 2);
+    const [portion, setPortion] = useState(0); //current portion of pages
+    let pagesCount = Math.ceil(totalUsersCount / pageSize); //all pages with value "pageSize" 
+    let portionCount = Math.ceil(pagesCount / (pageSize * 2)); //how much portions with (pageSize * 2) pages
+    let leftPageOfPortion = portion * (pageSize * 2) + 1;//first number of current portion
+    let rightPageOfPortion = (portion + 1) * (pageSize * 2);//last number of current portion
     let pages = [];
     for (let i = leftPageOfPortion; i <= rightPageOfPortion; i++) { pages.push(i) };
 
