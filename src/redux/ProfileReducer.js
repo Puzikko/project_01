@@ -3,6 +3,7 @@ import { profileAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const SET_PROFILE_USER_DATA = 'SET-PROFILE-USER-DATA';
 const SET_USER_STATUS = 'SET-USER-STATUS';
+const SET_PROFILE_PHOTOS = 'SET-PROFILE-PHOTOS'
 
 let initialState = {
     postsData: [
@@ -37,6 +38,12 @@ export const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             };
+        case SET_PROFILE_PHOTOS:
+            return {
+                ...state,
+                ...state.profileUserData,
+                photos: action.photos
+            };
         default:
             return state;
     };
@@ -50,6 +57,9 @@ const setProfileUserData = (profileUserData) => {
 }
 const setUserStatus = (status) => {
     return { type: SET_USER_STATUS, status }
+}
+const setProfilePhotos = (photos) => {
+    return { type: SET_PROFILE_PHOTOS, photos }
 }
 export const getUserProfileThunk = (userId) => {
     return async (dispatch) => {
@@ -70,5 +80,17 @@ export const putUserStatusThunk = (status) => {
             dispatch(setUserStatus(status))
         }
         else dispatch(setUserStatus('No status...'))
+    }
+}
+export const putUserNewPhotoThunk = (file) => {
+    return async (dispatch) => {
+        debugger
+        let data = await profileAPI.putProfilePhoto(file)
+        console.log(data.resultCode)
+        if (data.resultCode === 0) {
+            debugger
+            dispatch(setProfilePhotos(data.data))
+        }
+        else console.log(data.messages)
     }
 }

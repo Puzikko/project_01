@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUserProfileThunk, getUserStatusThunk, putUserStatusThunk } from '../../redux/ProfileReducer';
+import { getUserProfileThunk, getUserStatusThunk, putUserStatusThunk, putUserNewPhotoThunk } from '../../redux/ProfileReducer';
 import AvatarDescription from "./Avatar_Description/AvatarDescription";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from 'react-redux';
@@ -15,12 +15,23 @@ class ProfileAPIContainer extends React.Component {
         this.props.getUserStatusThunk(this.props.urlData)
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.urlData !== prevProps.urlData) {
+            this.props.getUserProfileThunk(this.props.urlData)
+            this.props.getUserStatusThunk(this.props.urlData)
+        }
+    }
+
+
+
     render() {
         return (
             <div>
                 <AvatarDescription profileData={this.props.profileData}
                     status={this.props.status}
                     putUserStatusOnServer={this.props.putUserStatusThunk}
+                    putUserNewPhotoThunk={this.props.putUserNewPhotoThunk}
+                    isOwner={this.props.userId === +this.props.urlData}
                 />
                 <MyPostsContainer />
             </div>
@@ -44,6 +55,6 @@ const UrlDataComponent = (props) => {
 
 const WithRedirectProfilePage = WithAuthRedirect(UrlDataComponent); // Компонент с подтверждённой(/нет) аутентификацией
 
-const Profile = connect(mapStateToProps, { getUserProfileThunk, getUserStatusThunk, putUserStatusThunk })
+const Profile = connect(mapStateToProps, { getUserProfileThunk, getUserStatusThunk, putUserStatusThunk, putUserNewPhotoThunk })
     (WithRedirectProfilePage);
 export default Profile;

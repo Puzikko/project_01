@@ -9,7 +9,7 @@ const News = (props) => {
                 <button onClick={props.prevPhoto}>Previous</button>
                 <button onClick={props.nextPhoto}>Next</button>
             </div>
-            <img src={`${props.src}`} />
+            <img src={`${props.src}`} alt='' />
         </div>
     );
 }

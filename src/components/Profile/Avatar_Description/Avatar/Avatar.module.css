@@ -7,6 +7,10 @@
     margin-left: 10px;
 }
 
+.avatar input {
+    max-width: 200px;
+}
+
 .avatar img {
     width: 200px;
     height: 200px;
@@ -19,6 +23,7 @@
 .fullName {
     margin-top: 65px;
 }
+
 
 .imgBlock {
     margin-bottom: -84px;

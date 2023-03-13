@@ -3,7 +3,7 @@ import Preloader from '../../common/Preloader/Preloader';
 import Avatar from './Avatar/Avatar';
 import ContactsAndJob from './Description/ContactsAndJob';
 
-const AvatarDescription = ({ profileData, status, putUserStatusOnServer }) => {
+const AvatarDescription = ({ profileData, status, putUserStatusOnServer, putUserNewPhotoThunk, isOwner }) => {
 
     if (!profileData) return <Preloader />
     return (
@@ -12,7 +12,9 @@ const AvatarDescription = ({ profileData, status, putUserStatusOnServer }) => {
                 fullName={profileData.fullName}
                 aboutMe={profileData.aboutMe}
                 status={status}
+                isOwner={isOwner}
                 putUserStatusOnServer={putUserStatusOnServer}
+                putUserNewPhotoThunk={putUserNewPhotoThunk}
             />
             <ContactsAndJob contacts={profileData.contacts}
                 lookingForAJob={profileData.lookingForAJob}
