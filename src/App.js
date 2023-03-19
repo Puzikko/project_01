@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import './App.css';
 import Profile from './components/Profile/ProfileContainer';
 import Music from "./components/Music/Music";
-import Settings from "./components/Settings/Settings";
+import SettingsContainer from "./components/Settings/Settings";
 import { Routes, Route } from "react-router-dom";
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -54,7 +54,7 @@ class App extends React.Component {
 
                             <Route path='/news' element={<NewsContainer />} />
                             <Route path='/music' element={<Music />} />
-                            <Route path='/settings' element={<Settings />} />
+                            <Route path='/settings' element={<SettingsContainer />} />
                             <Route path='/login' element={<LogIn />} />
                         </Routes>
                     </Suspense>

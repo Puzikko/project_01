@@ -1,22 +1,30 @@
 import React from "react"
 import styles from "./FormsControl.module.css"
+import { Field } from "redux-form";
 
-export const Textarea = ({ input, meta, ...props }) => {
-    const hasError = meta.touched && meta.error;
+const FormControl = ({ meta: { touched, error }, children }) => {
+    const hasError = touched && error;
     return <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
-        <div>
-            <textarea {...input} {...props} />
-        </div>
-        {hasError && <span>{meta.error}</span>}
+        {children}
+        {hasError && <div><span>{error}</span></div>}
     </div>
-}
+};
 
-export const Input = ({ input, meta, ...props }) => {
-    const hasError = meta.touched && meta.error;
-    return <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
-        <div>
-            <input {...input} {...props} />
-        </div>
-        {hasError && <span>{meta.error}</span>}
+export const Textarea = (props) => {
+    // console.log({ input, props })
+    const { input, meta, child, ...restProps } = props;
+    return <FormControl {...props}><textarea {...input} {...restProps} /></FormControl>
+};
+
+export const Input = (props) => {
+    // console.log({ input, props })
+    const { input, meta, child, ...restProps } = props;
+    return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
+};
+
+export const createField = (name, component, props, text) => {
+    // const { name, component, text } = props;
+    return <div>
+        <Field name={name} component={component} {...props} /> {text}
     </div>
-}
+};

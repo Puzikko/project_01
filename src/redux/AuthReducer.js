@@ -38,7 +38,6 @@ export const authMeThunk = () => {
 };
 
 export const logInThunk = (email, password, rememberMe) => async (dispatch) => {
-
     let response = await authAPI.logIn(email, password, rememberMe);
     if (response.data.resultCode === 0) {
         dispatch(authMeThunk())

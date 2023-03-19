@@ -7,6 +7,7 @@ import { Navigate } from 'react-router-dom';
 const LogIn = ({ logInThunk, isAuth, userId }) => {
     // ф-ия onSubmit собирает все приходящие данные из формы логина (formData)
     const onSubmit = (formData) => {
+        debugger
         logInThunk(formData.email, formData.password, formData.rememberMe)
     }
 

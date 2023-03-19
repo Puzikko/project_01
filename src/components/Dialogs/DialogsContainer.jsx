@@ -12,7 +12,6 @@ import { getDialogsData, getMessagesData } from '../../redux/DialogsSelector';
 class DialogsContainer extends React.Component {
 
     render() {
-        if (!this.props.isAuth) return <Navigate replace to='/login' />
         return (
             <>
                 <div className={classDialogs.homePage}>

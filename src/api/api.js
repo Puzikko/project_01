@@ -39,6 +39,7 @@ export const authAPI = {
             })
     },
     logIn(email, password, rememberMe = false) {
+        debugger
         return instance.post('auth/login', { email, password, rememberMe })
     },
     logOut() {
@@ -62,6 +63,11 @@ export const profileAPI = {
 
     putUserStatus(status) {
         return instance.put('profile/status', { status })
+            .then(response => response.data)
+    },
+
+    putProfileInfo(formData) {
+        return instance.put('profile', formData)
             .then(response => response.data)
     },
 
