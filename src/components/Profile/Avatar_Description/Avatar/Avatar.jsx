@@ -37,7 +37,7 @@ const Avatar = ({ avatar, status, fullName, aboutMe, putUserStatusOnServer, putU
 
                 <div className={classAvatar.fullName}>
                     <h2>{fullName}</h2>
-                    <b>Status:</b>
+                    <b>Status: </b>
                     <Status status={status}
                         putUserStatusOnServer={putUserStatusOnServer} />
                     <div>
