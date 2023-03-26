@@ -3,9 +3,8 @@ import classDialogs from './../Dialogs.module.css';
 import { NavLink } from "react-router-dom";
 
 const DialogUser = ({ dialogsData }) => {
-
     let dialog = dialogsData.map((dialog, index) =>
-        <div>
+        <div key={index}>
             <img alt=''></img>
             <NavLink key={index} to={'/dialogs/' + dialog.id}
                 className={({ isActive }) => isActive ? classDialogs.active : ''}>{dialog.name}</NavLink>

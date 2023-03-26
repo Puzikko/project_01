@@ -1,9 +1,12 @@
 import { authMeThunk } from "./AuthReducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const CHANGE_IS_ERROR = 'CHANGE_IS_ERROR';
 
 let initialState = {
     initialized: false,
+    errorText: 'Error1 & Error2',
+    isError: true,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -14,14 +17,22 @@ export const appReducer = (state = initialState, action) => {
                 ...state,
                 initialized: true,
             }
+        case CHANGE_IS_ERROR:
+            return {
+                ...state,
+                isError: false
+            }
         default:
             return state;
     };
 };
 
 export const initializedSuccessAC = () => {
-
     return { type: INITIALIZED_SUCCESS }
+};
+
+export const changeToggleIsError = () => {
+    return { type: CHANGE_IS_ERROR }
 };
 
 export const initializeAppTC = () => {

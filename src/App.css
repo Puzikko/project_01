@@ -1,7 +1,7 @@
 .app-wrapper {
   margin: auto;
   display: grid;
-  height: 100%;
+  min-height: 100vh;
   padding: 0px;
   background-color: wheat;
 
