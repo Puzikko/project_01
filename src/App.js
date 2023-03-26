@@ -24,7 +24,7 @@ const NewsContainer = React.lazy(() => import('./components/News/NewsContainer')
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeAppTC();
-    }
+    };
     componentDidUpdate(prevProps) {
         if (prevProps.isAuth !== this.props.isAuth) {
             if (this.props.isAuth) {
@@ -34,8 +34,8 @@ class App extends React.Component {
                 console.log('Navigate login')
                 return <Navigate replace to={'/login'} />
             }
-        }
-    }
+        };
+    };
     render() {
         if (!this.props.initialized) {
             return (
@@ -44,8 +44,8 @@ class App extends React.Component {
                     <NavbarContainer />
                     <div className='app-wrapper-content'> <Preloader /> </div>
                 </div>
-            )
-        }
+            );
+        };
         return (
             <div className='app-wrapper'>
                 <HeaderContainer />
@@ -84,7 +84,7 @@ const mapStateToProps = (state) => {
         isAuth: getIsAuth(state),
         errorText: getErrorText(state),
         isError: getIsError(state),
-    }
+    };
 };
 
 export default connect(mapStateToProps, { initializeAppTC, changeToggleIsError })(App);
