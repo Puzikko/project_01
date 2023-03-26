@@ -3,52 +3,28 @@ import { NavLink } from 'react-router-dom';
 import classContactsAndJob from './ContactsAndJob.module.css';
 
 const ContactsAndJob = ({ contacts, lookingForAJob, lookingForAJobDescription }) => {
-
     return (
         <div className={classContactsAndJob.wrapper}>
             <div className={classContactsAndJob.contacts}>
-                You can find me here
+                <b>You can find me here</b>
                 <div>
                     <ul>
-                        <li>
-                            <NavLink to={contacts.facebook}>facebook</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={contacts.website}>website</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={contacts.vk}>vk</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={contacts.twitter}>twitter</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={contacts.instagram}>instagram</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={contacts.youtube}>youtube</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={contacts.github}>github</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={contacts.mainLink}>mainLink</NavLink>
-                        </li>
+                        {Object.keys(contacts).map(key => <ContactInfo key={key} contactKey={key} contactValue={contacts[key]} />)}
                     </ul>
                 </div>
             </div>
 
-            <div className={classContactsAndJob.lookingForJob}>
-                Looking for a job:
-                <div>
-                    {lookingForAJob.toString()}
-                </div>
-                <div>
-                    {lookingForAJobDescription}
-                </div>
+            <div className={classContactsAndJob.lookingForAJob}>
+                <b>Looking for a job:</b> {lookingForAJob ? lookingForAJobDescription : 'No'}
             </div>
         </div >
     )
+}
+
+const ContactInfo = ({ contactKey, contactValue }) => {
+    return (<li>
+        <NavLink to={contactValue}>{contactKey}</NavLink>
+    </li>)
 }
 
 export default ContactsAndJob;

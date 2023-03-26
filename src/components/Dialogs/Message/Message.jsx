@@ -17,9 +17,7 @@ const Message = ({ messagesData, sendMessage }) => {
 
     return (
         <div className={classDialogs.userMessages}>
-            <div>
-                {message}
-            </div>
+            {message}
             <div>
                 <MessageInput onSubmit={getMessage} />
             </div>

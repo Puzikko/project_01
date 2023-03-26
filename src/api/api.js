@@ -38,12 +38,18 @@ export const authAPI = {
                 return response.data
             })
     },
-    logIn(email, password, rememberMe = false) {
-        return instance.post('auth/login', { email, password, rememberMe })
+    logIn(email, password, rememberMe = false, captcha = null) {
+        return instance.post('auth/login', { email, password, rememberMe, captcha })
     },
     logOut() {
         return instance.delete('auth/login')
-    }
+    },
+    captcha() {
+        return instance.get('/security/get-captcha-url')
+            .then(response => {
+                return response.data
+            })
+    },
 
 };
 
@@ -62,6 +68,11 @@ export const profileAPI = {
 
     putUserStatus(status) {
         return instance.put('profile/status', { status })
+            .then(response => response.data)
+    },
+
+    putProfileInfo(formData) {
+        return instance.put('profile', formData)
             .then(response => response.data)
     },
 

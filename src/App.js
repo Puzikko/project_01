@@ -3,7 +3,7 @@ import './App.css';
 import Profile from './components/Profile/ProfileContainer';
 import Music from "./components/Music/Music";
 import SettingsContainer from "./components/Settings/Settings";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LogIn from './components/LogIn/LogIn';
@@ -24,7 +24,7 @@ const NewsContainer = React.lazy(() => import('./components/News/NewsContainer')
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeAppTC();
-    };
+    }
     componentDidUpdate(prevProps) {
         if (prevProps.isAuth !== this.props.isAuth) {
             if (this.props.isAuth) {
@@ -34,8 +34,8 @@ class App extends React.Component {
                 console.log('Navigate login')
                 return <Navigate replace to={'/login'} />
             }
-        };
-    };
+        }
+    }
     render() {
         if (!this.props.initialized) {
             return (
@@ -44,8 +44,8 @@ class App extends React.Component {
                     <NavbarContainer />
                     <div className='app-wrapper-content'> <Preloader /> </div>
                 </div>
-            );
-        };
+            )
+        }
         return (
             <div className='app-wrapper'>
                 <HeaderContainer />
@@ -66,7 +66,7 @@ class App extends React.Component {
 
                             <Route path='/news' element={<NewsContainer />} />
                             <Route path='/music' element={<Music />} />
-                            <Route path='/settings' element={<Settings />} />
+                            <Route path='/settings' element={<SettingsContainer />} />
                             <Route path='/login' element={<LogIn />} />
                         </Routes>
                     </Suspense>
@@ -84,7 +84,7 @@ const mapStateToProps = (state) => {
         isAuth: getIsAuth(state),
         errorText: getErrorText(state),
         isError: getIsError(state),
-    };
+    }
 };
 
 export default connect(mapStateToProps, { initializeAppTC, changeToggleIsError })(App);

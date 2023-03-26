@@ -84,13 +84,9 @@ export const putUserStatusThunk = (status) => {
 }
 export const putUserNewPhotoThunk = (file) => {
     return async (dispatch) => {
-        debugger
         let data = await profileAPI.putProfilePhoto(file)
-        console.log(data.resultCode)
         if (data.resultCode === 0) {
-            debugger
             dispatch(setProfilePhotos(data.data))
         }
-        else console.log(data.messages)
     }
 }

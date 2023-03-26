@@ -4,7 +4,7 @@ import { requiredField } from "../../utils/validators/validators";
 import { Input } from "../common/FormsControls/FormsControl";
 import classLoginForm from "../common/FormsControls/FormsControl.module.css";
 
-const LogInForm = ({ handleSubmit, error }) => {
+const LogInForm = ({ handleSubmit, error, captchaURL }) => {
     //у тега <form> есть событие onSubmit (как и у нативной формы)
     return <form onSubmit={handleSubmit}>
         <div>
@@ -25,6 +25,14 @@ const LogInForm = ({ handleSubmit, error }) => {
         {error && <div className={classLoginForm.formSummaryError}>
             {error}
         </div>}
+        {captchaURL &&
+            <div>
+                <img src={captchaURL} alt='' />
+                <div>
+                    <Field placeholder="Enter symbols from captcha" name='captcha'
+                        component={Input} />
+                </div>
+            </div>}
         <div>
             <button>Login</button>
         </div>
