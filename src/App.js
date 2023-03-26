@@ -3,14 +3,16 @@ import './App.css';
 import Profile from './components/Profile/ProfileContainer';
 import Music from "./components/Music/Music";
 import SettingsContainer from "./components/Settings/Settings";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LogIn from './components/LogIn/LogIn';
 import { connect } from 'react-redux';
-import { initializeAppTC } from './redux/AppReducer';
+import { initializeAppTC, changeToggleIsError } from './redux/AppReducer';
 import Preloader from './components/common/Preloader/Preloader';
-import { getInitialized } from './redux/AppSelector';
+import { getErrorText, getInitialized, getIsError } from './redux/AppSelector';
+import { getIsAuth } from './redux/AuthSelector';
+import { Popup } from './components/common/PopUp/popUp';
 
 const Dialogs = React.lazy(() => import('./components/Dialogs/DialogsContainer')); //Функция React.lazy позволяет рендерить динамический импорт как обычный компонент.
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer')); //Она автоматически загрузит бандл, содержащий OtherComponent, когда этот компонент будет впервые отрендерен.
@@ -23,6 +25,17 @@ class App extends React.Component {
     componentDidMount() {
         this.props.initializeAppTC();
     }
+    componentDidUpdate(prevProps) {
+        if (prevProps.isAuth !== this.props.isAuth) {
+            if (this.props.isAuth) {
+                console.log('Navigate profile')
+                return <Navigate replace to={'/profile'} />
+            } else {
+                console.log('Navigate login')
+                return <Navigate replace to={'/login'} />
+            }
+        }
+    }
     render() {
         if (!this.props.initialized) {
             return (
@@ -33,7 +46,6 @@ class App extends React.Component {
                 </div>
             )
         }
-
         return (
             <div className='app-wrapper'>
                 <HeaderContainer />
@@ -58,6 +70,8 @@ class App extends React.Component {
                             <Route path='/login' element={<LogIn />} />
                         </Routes>
                     </Suspense>
+                    {this.props.isError &&
+                        <Popup text={this.props.errorText} closePopup={() => this.props.changeToggleIsError()} /> /*Всплывашка с ошибкой*/}
                 </div>
             </div>
         );
@@ -67,7 +81,10 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
         initialized: getInitialized(state),
+        isAuth: getIsAuth(state),
+        errorText: getErrorText(state),
+        isError: getIsError(state),
     }
 };
 
-export default connect(mapStateToProps, { initializeAppTC })(App);
+export default connect(mapStateToProps, { initializeAppTC, changeToggleIsError })(App);
