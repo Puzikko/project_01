@@ -1,6 +1,6 @@
 import React from 'react';
 import classDialogs from './../Dialogs.module.css';
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 
 const DialogUser = ({ dialogsData }) => {
     let dialog = dialogsData.map((dialog, index) =>
