@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/project_01/static/css/main.c1254520.css",
-    "main.js": "/project_01/static/js/main.118c4d5e.js",
+    "main.css": "/project_01/static/css/main.e815fa60.css",
+    "main.js": "/project_01/static/js/main.9665026f.js",
     "static/css/267.87abf845.chunk.css": "/project_01/static/css/267.87abf845.chunk.css",
-    "static/js/267.12f47a48.chunk.js": "/project_01/static/js/267.12f47a48.chunk.js",
+    "static/js/267.b432960c.chunk.js": "/project_01/static/js/267.b432960c.chunk.js",
     "static/css/33.1703c7f7.chunk.css": "/project_01/static/css/33.1703c7f7.chunk.css",
     "static/js/33.c5a3c10c.chunk.js": "/project_01/static/js/33.c5a3c10c.chunk.js",
     "static/css/335.85df2844.chunk.css": "/project_01/static/css/335.85df2844.chunk.css",
@@ -14,10 +14,10 @@
     "static/media/Snapchat-Logo.jpg": "/project_01/static/media/Snapchat-Logo.206d3cf857669a3217ea.jpg",
     "index.html": "/project_01/index.html",
     "static/media/Spinner.svg": "/project_01/static/media/Spinner.98a437a9c34e63eef0bb77e1989f05c0.svg",
-    "main.c1254520.css.map": "/project_01/static/css/main.c1254520.css.map",
-    "main.118c4d5e.js.map": "/project_01/static/js/main.118c4d5e.js.map",
+    "main.e815fa60.css.map": "/project_01/static/css/main.e815fa60.css.map",
+    "main.9665026f.js.map": "/project_01/static/js/main.9665026f.js.map",
     "267.87abf845.chunk.css.map": "/project_01/static/css/267.87abf845.chunk.css.map",
-    "267.12f47a48.chunk.js.map": "/project_01/static/js/267.12f47a48.chunk.js.map",
+    "267.b432960c.chunk.js.map": "/project_01/static/js/267.b432960c.chunk.js.map",
     "33.1703c7f7.chunk.css.map": "/project_01/static/css/33.1703c7f7.chunk.css.map",
     "33.c5a3c10c.chunk.js.map": "/project_01/static/js/33.c5a3c10c.chunk.js.map",
     "335.85df2844.chunk.css.map": "/project_01/static/css/335.85df2844.chunk.css.map",
@@ -25,7 +25,7 @@
     "787.b02e6055.chunk.js.map": "/project_01/static/js/787.b02e6055.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1254520.css",
-    "static/js/main.118c4d5e.js"
+    "static/css/main.e815fa60.css",
+    "static/js/main.9665026f.js"
   ]
 }
