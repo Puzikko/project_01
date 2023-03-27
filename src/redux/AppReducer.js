@@ -1,12 +1,13 @@
 import { authMeThunk } from "./AuthReducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
-const CHANGE_IS_ERROR = 'CHANGE_IS_ERROR';
+const SET_ERROR_TEXT = 'SET_ERROR_TEXT';
+const DELETE_ERROR_TEXT = 'DELETE_ERROR_TEXT';
 
 let initialState = {
     initialized: false,
-    errorText: 'Error1 & Error2',
-    isError: true,
+    errorText: '',
+    isError: false,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -17,10 +18,17 @@ export const appReducer = (state = initialState, action) => {
                 ...state,
                 initialized: true,
             }
-        case CHANGE_IS_ERROR:
+        case DELETE_ERROR_TEXT:
             return {
                 ...state,
-                isError: false
+                errorText: '',
+                isError: false,
+            }
+        case SET_ERROR_TEXT:
+            return {
+                ...state,
+                errorText: action.errorText,
+                isError: true,
             }
         default:
             return state;
@@ -31,8 +39,12 @@ export const initializedSuccessAC = () => {
     return { type: INITIALIZED_SUCCESS }
 };
 
-export const changeToggleIsError = () => {
-    return { type: CHANGE_IS_ERROR }
+export const deleteErrorText = () => {
+    return { type: DELETE_ERROR_TEXT }
+};
+
+export const setErrorText = (errorText) => {
+    return { type: SET_ERROR_TEXT, errorText }
 };
 
 export const initializeAppTC = () => {

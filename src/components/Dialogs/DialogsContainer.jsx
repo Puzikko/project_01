@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import DialogUser from './DialogUser/DialogUser';
 import Message from './Message/Message';
-import { Navigate } from 'react-router-dom';
 import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
 import { getDialogsData, getMessagesData } from '../../redux/DialogsSelector';
 

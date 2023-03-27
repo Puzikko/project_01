@@ -5,7 +5,8 @@ export const Popup = ({ text, closePopup }) => {
     return (
         <div className={popupStyle.popupContainer}>
             <div className={popupStyle.popupBody}>
-                <h1>{text}</h1>
+                <h2>Error:</h2>
+                <p>{text}</p>
                 <button onClick={closePopup}>Close X</button>
             </div>
         </div>

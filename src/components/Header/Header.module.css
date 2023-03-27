@@ -1,7 +1,8 @@
 .head {
     grid-area: h;
     background-image: linear-gradient(to right, cornflowerblue, rgb(236, 96, 255));
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 9fr 100px;
 }
